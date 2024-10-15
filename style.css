@@ -1,4 +1,4 @@
-body{
+main{
   background-color: rgba(0, 0, 0, 0.76);
   display: flex;
   flex-direction: column;
@@ -10,4 +10,22 @@ body{
 button{
   height: 80px;
   width: 160px;
+}
+
+.seq{
+  /*height:400px;*/
+  width: 600px;
+  background-color: orange;
+}
+
+.seq__step{
+  height: 80px;
+  background-color: antiquewhite;
+  text-align: center;
+  border: 2px solid gray;
+  border-radius: 10px;
+}
+
+.seq__step-active{
+  background-color: orange
 }
