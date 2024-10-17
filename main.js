@@ -11,24 +11,41 @@ let stepSelector = []
 
 // methods
 
-const startVisualSequencer = () => {
-    console.log(stepSelector[stepCounter-1].textContent)
-    console.log(stepCounter)
-    console.log(stepSelector[stepCounter-1].textContent === stepCounter.toString())
+const handleStepsVisualStyles = () => {
+    stepSelector[stepCounter-1].textContent === "1" && stepSelector[7].classList.remove("seq__step-active")
+
+    if (stepSelector[stepCounter-1].textContent === stepCounter.toString()) {
+
+        console.log('actual step', stepSelector[stepCounter - 1].textContent)
+        stepSelector[stepCounter - 1].classList.add("seq__step-active")
+        stepSelector[stepCounter-1].textContent>"1" && stepSelector[stepCounter-2].classList.remove("seq__step-active")
+
+    }
+
+}
+
+const cleanAndStopSequencer = () => {
+
+    // clean visually
+    stepSelector.forEach((item)=> item.classList.remove("seq__step-active"))
+
+    // stop it
+    stepCounter = 1
+    clearInterval(startedID)
+}
+
+const startSequencer = () => {
+
     stepTime = (bpm / 60 ) * 1000
 
     startedID =setInterval(() => {
 
-        stepSelector[stepCounter-1].textContent === stepCounter.toString() ?
-            stepSelector[stepCounter-1].classList.add("seq__step-active")
-            :
-            stepSelector[stepCounter-1].classList.remove("seq__step-active")
-
-        stepSelector[stepCounter-1].classList.remove("seq__step-active")
+        handleStepsVisualStyles()
         stepCounter<8 ? stepCounter++ : stepCounter = 1
 
-
     }, stepTime)
+
+
 }
 
 const playSynth = () => {
@@ -42,22 +59,20 @@ function started() {
         console.log('synth start')
         playSynth()
     }, stepTime)*/
-    startVisualSequencer()
+    startSequencer()
 }
 
 // events
 
 document.querySelector(".play").addEventListener("click", () => {
-    console.log('play')
     /*playSynth()
     started()*/
-    startVisualSequencer()
+    startSequencer()
 
 })
 
 document.querySelector(".stop").addEventListener("click", () => {
-   stepCounter = 1
-    clearInterval(startedID)
+    cleanAndStopSequencer()
 })
 
 document.addEventListener("DOMContentLoaded", function() {
