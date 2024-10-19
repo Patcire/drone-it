@@ -1,9 +1,8 @@
-import * as Tone from "tone";
+import {playSynth, stopAllSynthParameters} from "./synthLogic.js";
 
 // variables
 
 let startedID
-const synth = new Tone.FMSynth().toDestination()
 let bpm = 60
 let stepCounter = 1
 let stepTime
@@ -41,38 +40,24 @@ const startSequencer = () => {
     startedID =setInterval(() => {
 
         handleStepsVisualStyles()
+        playSynth()
         stepCounter<8 ? stepCounter++ : stepCounter = 1
 
     }, stepTime)
 
-
 }
 
-const playSynth = () => {
-   /* const now = Tone.now()*/
-    synth.triggerAttackRelease("C4", "16n"/*, now*/)
-   /* synth.triggerAttackRelease("E4", "16t", now+1.5)
-    synth.triggerAttackRelease("D7", "16n", now+2.5)*/
-}
-function started() {
-   /* startedID = setInterval(()=>{
-        console.log('synth start')
-        playSynth()
-    }, stepTime)*/
-    startSequencer()
-}
 
 // events
-
 document.querySelector(".play").addEventListener("click", () => {
-    /*playSynth()
-    started()*/
+
     startSequencer()
 
 })
 
 document.querySelector(".stop").addEventListener("click", () => {
     cleanAndStopSequencer()
+    stopAllSynthParameters()
 })
 
 document.addEventListener("DOMContentLoaded", function() {
