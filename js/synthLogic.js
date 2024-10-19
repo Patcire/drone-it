@@ -1,5 +1,9 @@
 import * as Tone from "tone";
 
+/*************************************************/
+/*--------- Here we control synth --------------*/
+/*************************************************/
+
 const synth = new Tone.FMSynth().toDestination()
 const osc = new Tone.Oscillator().toDestination()
 const osc2 = new Tone.Oscillator("C2").toDestination()

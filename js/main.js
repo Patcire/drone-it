@@ -1,5 +1,11 @@
 import {playSynth, stopAllSynthParameters} from "./synthLogic.js";
 
+
+/*************************************************/
+/*--------- Here we control the UI --------------*/
+/*----------- and General Logic -----------------*/
+/*************************************************/
+
 // variables
 
 let startedID
