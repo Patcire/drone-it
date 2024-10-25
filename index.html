@@ -13,14 +13,18 @@
   <body>
 
     <header class="header">
-      <img src="public/LOGO.svg" alt="drone-it logo">
+      <img src="/LOGO.svg" alt="drone-it logo">
 
-      <article class="header__actions">
-        <button>ON/OF</button>
-        <label>volume</label>
-        <input type="range">
-        <label>bpm</label>
-        <input type="range">
+      <article class="header actions">
+        <button class="header power">ON/OFF</button>
+        <div class="header slider-container">
+          <label for="volume" class="header vol-text">volume</label>
+          <input type="range" id="volume">
+        </div>
+      <div class="header slider-container">
+        <label for="bpm" class="header bpm-text">bpm</label>
+        <input type="range" id="bpm">
+      </div>
       </article>
 
     </header>

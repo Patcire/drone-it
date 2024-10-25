@@ -38,6 +38,7 @@ h1, h2, h3, h4 {
 /*-----------------------------------------------*/
 /*************************************************/
 
+/* Header */
 .header{
   font-family: Sixtyfour, sans-serif;
   color: var(--secondary-color);
@@ -47,13 +48,79 @@ h1, h2, h3, h4 {
   justify-content: space-between;
   align-items: center;
   /*background-color: orange;*/
+
+  &.actions{
+    display: flex;
+    flex-direction: column;
+    /*background-color: #19f124;*/
+
+  }
+  &.power{
+    border: none;
+    background-color: transparent ;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 4px;
+    transition: ease-in-out 0.4s;
+    width: auto;
+    margin: 0 auto;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02);
+    }
+  }
+
+  &.slider-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    row-gap: 1rem;
+    padding-bottom: 1rem;
+    font-weight: bold;
+    text-align: left;
+    min-width: 260px;
+
+    & label{
+      letter-spacing: 10px;
+      align-self: start;
+    }
+
+    & .bpm-text {
+      padding-left: 5%;
+    }
+    & .vol-text {
+      padding-left: 46%;
+    }
+
+  }
+
 }
 
-.header__actions{
-  display: flex;
-  flex-direction: column;
+#bpm, #volume {
+  -webkit-appearance: none;
+  height: 6px;
+  background-color: var(--secondary-color);
+  outline: none;
+  /* drag pointer*/
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 5px;
+    height: 15px;
+    background: var(--secondary-color);
+    cursor: pointer;
+  }
 }
 
+#volume{
+  width: 144px;
+}
+#bpm{
+  width: 260px;
+}
+
+/* Main */
 main{
   font-family: Sixtyfour, sans-serif;
   display: flex;
