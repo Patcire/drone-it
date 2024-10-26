@@ -26,6 +26,7 @@ body {
   padding: 0;
   width: 90%;
   max-width: 1600px;
+  font-family: Sixtyfour, sans-serif;
   background-color: var(--bg-color);
 }
 
@@ -40,8 +41,8 @@ h1, h2, h3, h4 {
 
 /* Header */
 .header{
-  font-family: Sixtyfour, sans-serif;
   color: var(--secondary-color);
+  font-family: Sixtyfour, sans-serif;
   padding-top: 1.5%;
   display: flex;
   justify-content: space-between;
@@ -127,24 +128,49 @@ h1, h2, h3, h4 {
 
 /* Main */
 main{
-  font-family: Sixtyfour, sans-serif;
+  font-size: 0.8rem;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  min-height: 100vh;
+  height: auto;
+  padding: 4rem 0 0 0;
+  color: var(--secondary-color);
+  letter-spacing: 1.5rem;
+  /*background: #FFD369;*/
+  gap: 2px;
+  & .section{
+    background: linear-gradient(#222831 50%, #3B5A72 100%);
+    width: 50%;
+    height: 33rem;
+    max-height: 600px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  & .screen{
+    margin-top: 4rem;
+    height: 340px;
+    border: 1px solid var(--secondary-color);
+    /*background-color: bisque;*/
+  }
+
 }
 
-button{
-  height: 80px;
-  width: 160px;
+.seq-header{
+  /*background-color: mediumpurple;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & img{
+    height: 20px;
+    cursor: pointer;
+  }
 }
 
 .seq{
   /*height:400px;*/
-  width: 600px;
-  background-color: orange;
+  width: 100%;
+  margin-top: 3rem;
 }
 
 .seq__step{
