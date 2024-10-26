@@ -21,7 +21,7 @@ html {
   text-size-adjust: none;
 }
 
-body, html {
+body {
   margin: 0 auto;
   padding: 0;
   width: 90%;
@@ -42,43 +42,48 @@ h1, h2, h3, h4 {
 .header{
   font-family: Sixtyfour, sans-serif;
   color: var(--secondary-color);
-  padding-top: 2.5%;
+  padding-top: 1.5%;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   /*background-color: orange;*/
 
   &.actions{
-    display: flex;
     flex-direction: column;
     /*background-color: #19f124;*/
-
   }
+
+  &.power-container{
+    width: 100%;
+    justify-content: end;
+    margin-left: 2.5%;
+    /*background-color: burlywood;*/
+  }
+
   &.power{
     border: none;
-    background-color: transparent ;
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 4px;
-    transition: ease-in-out 0.4s;
     width: auto;
-    margin: 0 auto;
-    &:hover {
+    height: auto;
+    padding: 0 0 1.5rem 0;
+    outline: none;
+    background: none;
+    & span{
+      transition: ease-in-out 0.4s;
+    }
+    & span:hover {
       cursor: pointer;
       transform: scale(1.02);
     }
   }
 
   &.slider-container{
-    display: flex;
+    /* background-color: aquamarine; */
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
+    align-items: end;
     row-gap: 1rem;
-    padding-bottom: 1rem;
     font-weight: bold;
-    text-align: left;
     min-width: 260px;
 
     & label{
@@ -90,7 +95,7 @@ h1, h2, h3, h4 {
       padding-left: 5%;
     }
     & .vol-text {
-      padding-left: 46%;
+      padding-left: 45%;
     }
 
   }

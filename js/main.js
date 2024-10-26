@@ -55,13 +55,13 @@ const startSequencer = () => {
 
 
 // events
-document.querySelector(".play").addEventListener("click", () => {
+document.querySelector(".on").addEventListener("click", () => {
 
     startSequencer()
 
 })
 
-document.querySelector(".stop").addEventListener("click", () => {
+document.querySelector(".off").addEventListener("click", () => {
     cleanAndStopSequencer()
     stopAllSynthParameters()
 })
