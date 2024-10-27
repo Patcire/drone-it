@@ -36,36 +36,78 @@
     <main class="main">
 
       <section class="main section">
-        <h3>visualizer</h3>
+        <div class="section-header">
+          <h3>visualizer</h3>
+        </div>
         <div class="main screen">
 
         </div>
       </section>
 
       <section class="main section">
-        
-        <header class="seq-header">
-          <h3>sequencer</h3>
-          <div>
-            <img src="/sine.svg" alt="sine wave">
-            <img src="/square.svg" alt="square wave">
-            <img src="/triangle.svg" alt="triangle wave">
-            <img src="/saw.svg" alt="saw wave">
+
+        <article>
+
+          <header class="section-header">
+            <h3>sequencer</h3>
+            <div>
+              <img src="/sine.svg" alt="sine wave">
+              <img src="/square.svg" alt="square wave">
+              <img src="/triangle.svg" alt="triangle wave">
+              <img src="/saw.svg" alt="saw wave">
+            </div>
+          </header>
+
+          <table class="seq">
+            <tr class="seq__row-notes">
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+              <td class="seq__note">E4</td>
+            </tr>
+            <tr class="seq__row-steps">
+              <td class="seq__step">1</td>
+              <td class="seq__step">2</td>
+              <td class="seq__step">3</td>
+              <td class="seq__step">4</td>
+              <td class="seq__step">5</td>
+              <td class="seq__step">6</td>
+              <td class="seq__step">7</td>
+              <td class="seq__step">8</td>
+            </tr>
+          </table>
+
+        </article>
+
+        <article class="effects">
+
+          <header class="section-header">
+            <h3>effects</h3>
+          </header>
+
+          <div class="effects-container">
+            <article class="effect">
+              <h4>reverb</h4>
+              <img src="public/cube%20rev%20S.svg" alt="cube (reverb)">
+              <input type="range" id="reverb" aria-label="reverb">
+            </article>
+            <article class="effect">
+              <h4>destroyer</h4>
+              <img src="public/destroyer.svg" alt="smash cube (bit crusher)">
+              <input type="range" id="destroyer" aria-label="destroyer">
+            </article>
+            <article class="effect">
+              <h4>delay</h4>
+              <img src="public/delay.svg" alt="series of cubes (delay)">
+              <input type="range" id="delay" aria-label="delay">
+            </article>
           </div>
-        </header>
-        
-        <table class="seq">
-          <tr class="seq__inst">
-            <td class="seq__step">1</td>
-            <td class="seq__step">2</td>
-            <td class="seq__step">3</td>
-            <td class="seq__step">4</td>
-            <td class="seq__step">5</td>
-            <td class="seq__step">6</td>
-            <td class="seq__step">7</td>
-            <td class="seq__step">8</td>
-          </tr>
-        </table>
+
+        </article>
 
       </section>
 
