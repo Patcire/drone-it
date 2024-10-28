@@ -1,4 +1,4 @@
-import {playSynth, stopAllSynthParameters} from "./synthLogic.js";
+import * as Tone from "tone";
 
 
 /*************************************************/
@@ -6,21 +6,46 @@ import {playSynth, stopAllSynthParameters} from "./synthLogic.js";
 /*----------- and General Logic -----------------*/
 /*************************************************/
 
-// variables
+//  general variables
 
 let startedID
 let bpm = 60
 let stepCounter = 1
 let stepTime
 let stepSelector = []
+let volumeValue = -12
 
-// seelctors
+// synth variables (tone.js objects)
+
+const volume = new Tone.Volume(0).toDestination()
+const synth = new Tone.FMSynth().connect(volume)
+const osc = new Tone.Oscillator().connect(volume)
+const osc2 = new Tone.Oscillator("C2").connect(volume)
+const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
+const signal = new Tone.Signal(440).connect(timesTwo)
+
+
+// selectors
 
 const bpmInput = document.querySelector("#bpm")
+const volumeInput = document.querySelector("#volume")
 const onButton = document.querySelector('.on')
 const offButton = document.querySelector('.off')
 
 // methods
+
+export const playSynth = () => {
+
+    synth.triggerAttackRelease("C4", "8n")
+
+    osc.start()
+    osc2.start()
+}
+
+export const stopAllSynthParameters = () =>{
+    osc2.stop()
+
+}
 
 const handleStepsVisualStyles = () => {
     stepSelector[stepCounter-1].textContent === "1" && stepSelector[7].classList.remove("seq__step-active")
@@ -52,7 +77,7 @@ const startSequencer = () => {
     startedID =setInterval(() => {
 
         handleStepsVisualStyles()
-        playSynth()
+        playSynth(volumeValue)
         stepCounter<8 ? stepCounter++ : stepCounter = 1
 
     }, stepTime)
