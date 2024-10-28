@@ -7,7 +7,7 @@ import * as Tone from "tone";
 const synth = new Tone.FMSynth().toDestination()
 const osc = new Tone.Oscillator().toDestination()
 const osc2 = new Tone.Oscillator("C2").toDestination()
-const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency);
+const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo)
 
 export const playSynth = () => {
@@ -22,3 +22,4 @@ export const stopAllSynthParameters = () =>{
     osc2.stop()
 
 }
+

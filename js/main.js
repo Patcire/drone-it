@@ -14,6 +14,12 @@ let stepCounter = 1
 let stepTime
 let stepSelector = []
 
+// seelctors
+
+const bpmInput = document.querySelector("#bpm")
+const onButton = document.querySelector('.on')
+const offButton = document.querySelector('.off')
+
 // methods
 
 const handleStepsVisualStyles = () => {
@@ -21,7 +27,7 @@ const handleStepsVisualStyles = () => {
 
     if (stepSelector[stepCounter-1].textContent === stepCounter.toString()) {
 
-        console.log('actual step', stepSelector[stepCounter - 1].textContent)
+        /*console.log('actual step', stepSelector[stepCounter - 1].textContent)*/
         stepSelector[stepCounter - 1].classList.add("seq__step-active")
         stepSelector[stepCounter-1].textContent>"1" && stepSelector[stepCounter-2].classList.remove("seq__step-active")
 
@@ -41,7 +47,7 @@ const cleanAndStopSequencer = () => {
 
 const startSequencer = () => {
 
-    stepTime = (bpm / 60 ) * 1000
+    stepTime = (60 / bpm ) * 1000
 
     startedID =setInterval(() => {
 
@@ -55,16 +61,22 @@ const startSequencer = () => {
 
 
 // events
-document.querySelector(".on").addEventListener("click", () => {
+onButton.addEventListener("click", () => {startSequencer()})
 
-    startSequencer()
-
-})
-
-document.querySelector(".off").addEventListener("click", () => {
+offButton.addEventListener("click", () => {
     cleanAndStopSequencer()
     stopAllSynthParameters()
 })
+
+
+bpmInput.addEventListener('change', (e) => {
+    bpm = e.target.value
+    let stepStorage = stepCounter
+    cleanAndStopSequencer()
+    stepCounter = stepStorage
+    startSequencer()
+})
+
 
 document.addEventListener("DOMContentLoaded", function() {
     stepSelector = document.querySelectorAll(".seq__step")
