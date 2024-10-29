@@ -13,17 +13,15 @@ let bpm = 60
 let stepCounter = 1
 let stepTime
 let stepSelector = []
-let volumeValue = -12
+let gainValue = 0
 
 // synth variables (tone.js objects)
-
-const volume = new Tone.Volume(0).toDestination()
-const synth = new Tone.FMSynth().connect(volume)
-const osc = new Tone.Oscillator().connect(volume)
-const osc2 = new Tone.Oscillator("C2").connect(volume)
+const finalNodeOfChain = new Tone.Gain().toDestination()
+const synth = new Tone.FMSynth().connect(finalNodeOfChain)
+const osc = new Tone.Oscillator().connect(finalNodeOfChain)
+const osc2 = new Tone.Oscillator("C2").connect(finalNodeOfChain)
 const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo)
-
 
 // selectors
 
@@ -34,12 +32,16 @@ const offButton = document.querySelector('.off')
 
 // methods
 
+const adjustGain = (gainValue) =>{
+    finalNodeOfChain.gain.value = gainValue
+}
+
 export const playSynth = () => {
 
     synth.triggerAttackRelease("C4", "8n")
-
     osc.start()
     osc2.start()
+
 }
 
 export const stopAllSynthParameters = () =>{
@@ -77,7 +79,7 @@ const startSequencer = () => {
     startedID =setInterval(() => {
 
         handleStepsVisualStyles()
-        playSynth(volumeValue)
+        playSynth()
         stepCounter<8 ? stepCounter++ : stepCounter = 1
 
     }, stepTime)
@@ -100,6 +102,11 @@ bpmInput.addEventListener('change', (e) => {
     cleanAndStopSequencer()
     stepCounter = stepStorage
     startSequencer()
+})
+
+volumeInput.addEventListener('input', (e) => {
+    adjustGain(e.target.value)
+
 })
 
 
