@@ -36,7 +36,7 @@ const adjustGain = (gainValue) =>{
     finalNodeOfChain.gain.value = gainValue
 }
 
-export const playSynth = () => {
+const playSynth = () => {
 
     synth.triggerAttackRelease("C4", "8n")
     osc.start()
@@ -44,7 +44,7 @@ export const playSynth = () => {
 
 }
 
-export const stopAllSynthParameters = () =>{
+const stopAllSynthParameters = () =>{
     osc2.stop()
 
 }
@@ -106,7 +106,6 @@ bpmInput.addEventListener('change', (e) => {
 
 volumeInput.addEventListener('input', (e) => {
     adjustGain(e.target.value)
-
 })
 
 
