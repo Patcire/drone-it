@@ -19,7 +19,7 @@ let gainValue = 0
 const finalNodeOfChain = new Tone.Gain().toDestination()
 const synth = new Tone.FMSynth().connect(finalNodeOfChain)
 const osc = new Tone.Oscillator().connect(finalNodeOfChain)
-const osc2 = new Tone.Oscillator("C2").connect(finalNodeOfChain)
+const osc2 = new Tone.Oscillator("A2").connect(finalNodeOfChain)
 const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo)
 

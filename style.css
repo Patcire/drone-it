@@ -200,8 +200,22 @@ main{
   text-align: center;
   border: 2px solid black;
   border-radius: 8px;
-
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  font-family: Sixtyfour, sans-serif;
 }
+
+.seq__note:hover{
+  cursor: pointer;
+}
+
+.seq__note:focus{
+  border: none;
+}
+
+
 
 .seq__row-steps{
   width: 100%;
