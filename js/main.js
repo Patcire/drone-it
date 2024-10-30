@@ -14,6 +14,7 @@ let stepCounter = 1
 let stepTime
 let stepSelector = []
 let gainValue = 0
+let sequenceOfNotes = []
 
 // synth variables (tone.js objects)
 const finalNodeOfChain = new Tone.Gain().toDestination()
@@ -29,7 +30,7 @@ const bpmInput = document.querySelector("#bpm")
 const volumeInput = document.querySelector("#volume")
 const onButton = document.querySelector('.on')
 const offButton = document.querySelector('.off')
-
+const noteSelectors =  document.querySelectorAll('.seq__note')
 // methods
 
 const adjustGain = (gainValue) =>{
@@ -88,6 +89,7 @@ const startSequencer = () => {
 
 
 // events
+
 onButton.addEventListener("click", () => {startSequencer()})
 
 offButton.addEventListener("click", () => {
@@ -108,6 +110,14 @@ volumeInput.addEventListener('input', (e) => {
     adjustGain(e.target.value)
 })
 
+
+noteSelectors.forEach( (element, index) => {
+    element.addEventListener("change", (e) => {
+        e.preventDefault()
+        sequenceOfNotes[index] = (e.target.value)
+        console.log(sequenceOfNotes)
+    })
+})
 
 document.addEventListener("DOMContentLoaded", function() {
     stepSelector = document.querySelectorAll(".seq__step")
