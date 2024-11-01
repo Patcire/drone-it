@@ -98,7 +98,7 @@ offButton.addEventListener("click", () => {
 })
 
 
-bpmInput.addEventListener('change', (e) => {
+bpmInput.addEventListener('input', (e) => {
     bpm = e.target.value
     let stepStorage = stepCounter
     cleanAndStopSequencer()
