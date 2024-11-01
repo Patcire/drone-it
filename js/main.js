@@ -14,7 +14,7 @@ let stepCounter = 1
 let stepTime
 let stepSelector = []
 let gainValue = 0
-let sequenceOfNotes = []
+let sequenceOfNotes = ['E4', 'E4', 'E4', 'E4', 'E4', 'E4', 'E4', 'E4' ]
 
 // synth variables (tone.js objects)
 const finalNodeOfChain = new Tone.Gain().toDestination()
@@ -39,7 +39,7 @@ const adjustGain = (gainValue) =>{
 
 const playSynth = () => {
 
-    synth.triggerAttackRelease("C4", "8n")
+    synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1], "8n")
     osc.start()
     osc2.start()
 
