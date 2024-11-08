@@ -169,16 +169,18 @@ main{
     font-size: 1rem;
     letter-spacing: 1.5rem;
   }
-  & img{
-    height: 20px;
-    cursor: pointer;
-  }
   & .waveform{
+    height: 20px;
+    width: auto;
     border: none;
     background: none;
+    cursor: pointer;
     transition: ease-in-out 0.5s;
   }
-
+  & img{
+    height: 20px;
+    pointer-events: none;
+  }
   & .waveform:hover{
     transform: scale(1.05);
   }

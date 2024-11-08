@@ -37,7 +37,7 @@ const triangleButton = document.querySelector('#triangle')
 const sawButton = document.querySelector('#saw')
 const offButton = document.querySelector('.off')
 const noteSelectors =  document.querySelectorAll('.seq__note')
-const waveformSelectors = document.querySelectorAll('.wf-selector')
+const waveformSelectors = document.querySelectorAll('.waveform')
 
 // methods
 
@@ -133,7 +133,6 @@ waveformSelectors.forEach((element, index) =>{
     element.addEventListener("click", (e) => {
         e.preventDefault()
         selectedWaveform = (e.target.id)
-        console.log(selectedWaveform)
     })
 })
 
