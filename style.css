@@ -173,6 +173,15 @@ main{
     height: 20px;
     cursor: pointer;
   }
+  & .waveform{
+    border: none;
+    background: none;
+    transition: ease-in-out 0.5s;
+  }
+
+  & .waveform:hover{
+    transform: scale(1.05);
+  }
 }
 
 .seq{
@@ -214,8 +223,6 @@ main{
 .seq__note:focus{
   border: none;
 }
-
-
 
 .seq__row-steps{
   width: 100%;
