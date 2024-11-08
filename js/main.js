@@ -15,12 +15,14 @@ let stepTime
 let stepSelector = []
 let gainValue = 0
 let sequenceOfNotes = ['E4', 'E4', 'E4', 'E4', 'E4', 'E4', 'E4', 'E4' ]
+const waveforms = ['sine', 'square', 'triangle', 'saw']
+let selectedWaveform = 'sine'
 
 // synth variables (tone.js objects)
 const finalNodeOfChain = new Tone.Gain().toDestination()
 const synth = new Tone.FMSynth().connect(finalNodeOfChain)
 const osc = new Tone.Oscillator().connect(finalNodeOfChain)
-const osc2 = new Tone.Oscillator("A2").connect(finalNodeOfChain)
+const osc2 =  new Tone.Oscillator("A2", selectedWaveform).connect(finalNodeOfChain)
 const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo)
 
@@ -29,8 +31,14 @@ const signal = new Tone.Signal(440).connect(timesTwo)
 const bpmInput = document.querySelector("#bpm")
 const volumeInput = document.querySelector("#volume")
 const onButton = document.querySelector('.on')
+const sineButton = document.querySelector('#sine')
+const squareButton = document.querySelector('#square')
+const triangleButton = document.querySelector('#triangle')
+const sawButton = document.querySelector('#saw')
 const offButton = document.querySelector('.off')
 const noteSelectors =  document.querySelectorAll('.seq__note')
+const waveformSelectors = document.querySelectorAll('.wf-selector')
+
 // methods
 
 const adjustGain = (gainValue) =>{
@@ -42,6 +50,7 @@ const playSynth = () => {
     synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1], "8n")
     osc.start()
     osc2.start()
+    console.log(osc2)
 
 }
 
@@ -118,6 +127,16 @@ noteSelectors.forEach( (element, index) => {
         console.log(sequenceOfNotes)
     })
 })
+
+
+waveformSelectors.forEach((element, index) =>{
+    element.addEventListener("click", (e) => {
+        e.preventDefault()
+        selectedWaveform = (e.target.id)
+        console.log(selectedWaveform)
+    })
+})
+
 
 document.addEventListener("DOMContentLoaded", function() {
     stepSelector = document.querySelectorAll(".seq__step")
