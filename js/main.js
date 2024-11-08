@@ -49,8 +49,8 @@ const playSynth = () => {
 
     synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1], "8n")
     osc.start()
+    osc2.baseType = selectedWaveform
     osc2.start()
-    console.log(osc2)
 
 }
 
