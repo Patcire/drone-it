@@ -219,6 +219,7 @@ main{
   background: none;
   border: none;
   color: var(--gray);
+  font-size: 1.2rem;
 }
 
 .seq__oct-selector:hover{
