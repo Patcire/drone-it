@@ -14,10 +14,10 @@ let stepCounter = 1
 let stepTime
 let stepSelector = []
 let gainValue = 0
-let sequenceOfNotes = ['E4', 'E4', 'E4', 'E4', 'E4', 'E4', 'E4', 'E4' ]
+let selectedOctave = '4'
+let sequenceOfNotes = [`E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`]
 const waveforms = ['sine', 'square', 'triangle', 'saw']
 let selectedWaveform = 'sine'
-
 // synth variables (tone.js objects)
 const finalNodeOfChain = new Tone.Gain().toDestination()
 const synth = new Tone.FMSynth().connect(finalNodeOfChain)
@@ -37,6 +37,7 @@ const triangleButton = document.querySelector('#triangle')
 const sawButton = document.querySelector('#saw')
 const offButton = document.querySelector('.off')
 const noteSelectors =  document.querySelectorAll('.seq__note')
+const octSelectors =  document.querySelectorAll('.seq__oct-selector')
 const waveformSelectors = document.querySelectorAll('.waveform')
 
 // methods
@@ -128,6 +129,14 @@ noteSelectors.forEach( (element, index) => {
     })
 })
 
+octSelectors.forEach((el, index) => {
+    el.addEventListener('click', (e)=>{
+        e.preventDefault()
+        console.log(selectedOctave, e.target.value)
+        e.target.value === '+' ? selectedOctave = selectedOctave++ : selectedOctave = selectedOctave--
+        console.log('selectedOct:', selectedOctave)
+    })
+})
 
 waveformSelectors.forEach((element, index) =>{
     element.addEventListener("click", (e) => {
