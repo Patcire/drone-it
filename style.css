@@ -200,6 +200,32 @@ main{
   display: flex;
   flex-direction: column;
 }
+
+.seq__row-octaves{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.seq__oct-actions{
+  width: 100%;
+  display: flex;
+  /*background-color: blue;*/
+}
+
+.seq__oct-selector{
+  width: 50%;
+  background: none;
+  border: none;
+  color: var(--gray);
+}
+
+.seq__oct-selector:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
 .seq__row-notes{
   width: 100%;
   display: flex;
