@@ -287,3 +287,52 @@ main{
     -webkit-text-stroke: 0.0005px var(--secondary-color);
   }
 }
+
+
+
+
+/*--------------Media Queries-----------------*/
+/*----------------------------------*/
+
+/*---- Tablet/Mobile ----*/
+
+@media (width<800px) {
+
+  .header{
+    flex-direction: column;
+
+    & img{
+      height: 100px;
+      padding-left: 65px;
+    }
+
+    & .actions{
+      justify-content: center;
+      align-items: center;
+    }
+
+    & .power-container{
+      /*background-color: #FFD369;*/
+      justify-content: center;
+      align-items: center;
+    }
+
+    & .power{
+      flex-direction: row;
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    & .screen {
+      height: 100px;
+    }
+    
+  }
+
+}
