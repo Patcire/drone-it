@@ -212,7 +212,7 @@ main{
 .seq__note{
   color: black;
   width: 100%;
-  height: 20px;
+  height: 25px;
   background-color: var(--gray);
   text-align: center;
   border: 2px solid black;
@@ -245,7 +245,7 @@ main{
   background-color: var(--gray);
   /*height: auto;*/
   width: 100%;
-  height: 54px;
+  height: 70px;
   text-align: center;
   border: 2px solid black;
   border-radius: 10px;
