@@ -214,7 +214,7 @@ main{
   /*background-color: blue;*/
 }
 
-.seq__oct-selector{
+.seq__oct-buttons{
   width: 50%;
   background: none;
   border: none;
@@ -222,7 +222,7 @@ main{
   font-size: 1.2rem;
 }
 
-.seq__oct-selector:hover{
+.seq__oct-buttons:hover{
   cursor: pointer;
   transform: scale(1.05);
 }

@@ -37,7 +37,8 @@ const triangleButton = document.querySelector('#triangle')
 const sawButton = document.querySelector('#saw')
 const offButton = document.querySelector('.off')
 const noteSelectors =  document.querySelectorAll('.seq__note')
-const octSelectors =  document.querySelectorAll('.seq__oct-selector')
+const octButtons =  document.querySelectorAll('.seq__oct-buttons')
+const octValuesSelectors = document.querySelectorAll('.seq__oct-value')
 const waveformSelectors = document.querySelectorAll('.waveform')
 
 // methods
@@ -129,12 +130,18 @@ noteSelectors.forEach( (element, index) => {
     })
 })
 
-octSelectors.forEach((el, index) => {
+octButtons.forEach((el, index) => {
     el.addEventListener('click', (e)=>{
         e.preventDefault()
-        console.log(selectedOctave, e.target.value)
-        e.target.value === '+' ? selectedOctave = selectedOctave++ : selectedOctave = selectedOctave--
-        console.log('selectedOct:', selectedOctave)
+        console.log('index: ', index, octValuesSelectors[index].textContent)
+        console.log(e.target, e.target.textContent)
+        if (e.target.textContent === '+'){
+            console.log('plus clicked, init value: ', octValuesSelectors[index-1].textContent)
+            octValuesSelectors[index-1].value = octValuesSelectors[index-1].textContent++
+            return
+        }
+        console.log('shoudnt')
+        octValuesSelectors[index].value = octValuesSelectors[index].textContent--
     })
 })
 
