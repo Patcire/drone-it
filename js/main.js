@@ -43,7 +43,8 @@ const octPlusButtons =  document.querySelectorAll('.seq__oct-plus-buttons')
 const octMinusButtons =  document.querySelectorAll('.seq__oct-minus-buttons')
 const octValuesSelectors = document.querySelectorAll('.seq__oct-value')
 const waveformSelectors = document.querySelectorAll('.waveform')
-const selectOptions = document.querySelectorAll('.seq__note *')
+const selectOptions = document.querySelectorAll('.seq__note')
+
 // methods
 
 const adjustGain = (gainValue) =>{
@@ -77,10 +78,18 @@ const handleStepsVisualStyles = () => {
 
 }
 
+const handleOptionOctaves = (index) =>{
+    const options = selectOptions[index].querySelectorAll('option')
+    options.forEach((el)=> {
+        el.textContent = el.textContent[0]+selectedOctaves[index]
+    })
+}
+
 const handleOctavePlusSelection = (index) => {
     if (octValuesSelectors[index].textContent <= 7){
         octValuesSelectors[index].value = octValuesSelectors[index].textContent++
         selectedOctaves[index] = octValuesSelectors[index].textContent
+        handleOptionOctaves(index)
     }
     // to do: apply styles when max octave is reached
 }
@@ -89,6 +98,7 @@ const handleOctaveMinusSelection = (index) => {
     if (octValuesSelectors[index].textContent >= 2){
         octValuesSelectors[index].value = octValuesSelectors[index].textContent--
         selectedOctaves[index] = octValuesSelectors[index].textContent
+        handleOptionOctaves(index)
     }
     // to do: apply styles when min octave is reached
 }
@@ -140,7 +150,6 @@ volumeInput.addEventListener('input', (e) => {
     adjustGain(e.target.value)
 })
 
-
 noteSelectors.forEach( (element, index) => {
     element.addEventListener("change", (e) => {
         e.preventDefault()
@@ -168,7 +177,6 @@ waveformSelectors.forEach((element, index) =>{
         selectedWaveform = (e.target.id)
     })
 })
-
 
 document.addEventListener("DOMContentLoaded", function() {
     stepSelector = document.querySelectorAll(".seq__step")
