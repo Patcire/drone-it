@@ -75,6 +75,22 @@ const handleStepsVisualStyles = () => {
 
 }
 
+const handleOctavePlusSelection = (index) => {
+    if (octValuesSelectors[index].textContent <= 7){
+        octValuesSelectors[index].value = octValuesSelectors[index].textContent++
+        selectedOctaves[index] = octValuesSelectors[index].textContent
+    }
+    // to do: apply styles when max octave is reached
+}
+
+const handleOctaveMinusSelection = (index) => {
+    if (octValuesSelectors[index].textContent >= 2){
+        octValuesSelectors[index].value = octValuesSelectors[index].textContent--
+        selectedOctaves[index] = octValuesSelectors[index].textContent
+    }
+    // to do: apply styles when min octave is reached
+}
+
 const cleanAndStopSequencer = () => {
 
     // clean visually
@@ -134,17 +150,14 @@ noteSelectors.forEach( (element, index) => {
 octPlusButtons.forEach((el, index) => {
     el.addEventListener('click', (e)=>{
         e.preventDefault()
-        octValuesSelectors[index].value = octValuesSelectors[index].textContent++
-        selectedOctaves[index] = octValuesSelectors[index].textContent
+        handleOctavePlusSelection(index)
     })
 })
 
 octMinusButtons.forEach((el, index) => {
     el.addEventListener('click', (e)=>{
         e.preventDefault()
-        octValuesSelectors[index].value = octValuesSelectors[index].textContent--
-        selectedOctaves[index] = octValuesSelectors[index].textContent
-        console.log(selectedOctaves)
+        handleOctaveMinusSelection(index)
     })
 })
 
