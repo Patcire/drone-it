@@ -14,8 +14,8 @@ let stepCounter = 1
 let stepTime
 let stepSelector = []
 let gainValue = 0
-let selectedOctave = '4'
-let sequenceOfNotes = [`E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`, `E${selectedOctave}`]
+let selectedOctaves = ['4', '4', '4', '4', '4', '4', '4', '4']
+let sequenceOfNotes = [`E${selectedOctaves[0]}`, `E${selectedOctaves[1]}`, `E${selectedOctaves[2]}`, `E${selectedOctaves[3]}`, `E${selectedOctaves[4]}`, `E${selectedOctaves[5]}`, `E${selectedOctaves[6]}`, `E${selectedOctaves[7]}`]
 const waveforms = ['sine', 'square', 'triangle', 'saw']
 let selectedWaveform = 'sine'
 // synth variables (tone.js objects)
@@ -37,7 +37,8 @@ const triangleButton = document.querySelector('#triangle')
 const sawButton = document.querySelector('#saw')
 const offButton = document.querySelector('.off')
 const noteSelectors =  document.querySelectorAll('.seq__note')
-const octButtons =  document.querySelectorAll('.seq__oct-buttons')
+const octPlusButtons =  document.querySelectorAll('.seq__oct-plus-buttons')
+const octMinusButtons =  document.querySelectorAll('.seq__oct-minus-buttons')
 const octValuesSelectors = document.querySelectorAll('.seq__oct-value')
 const waveformSelectors = document.querySelectorAll('.waveform')
 
@@ -130,18 +131,20 @@ noteSelectors.forEach( (element, index) => {
     })
 })
 
-octButtons.forEach((el, index) => {
+octPlusButtons.forEach((el, index) => {
     el.addEventListener('click', (e)=>{
         e.preventDefault()
-        console.log('index: ', index, octValuesSelectors[index].textContent)
-        console.log(e.target, e.target.textContent)
-        if (e.target.textContent === '+'){
-            console.log('plus clicked, init value: ', octValuesSelectors[index-1].textContent)
-            octValuesSelectors[index-1].value = octValuesSelectors[index-1].textContent++
-            return
-        }
-        console.log('shoudnt')
+        octValuesSelectors[index].value = octValuesSelectors[index].textContent++
+        selectedOctaves[index] = octValuesSelectors[index].textContent
+    })
+})
+
+octMinusButtons.forEach((el, index) => {
+    el.addEventListener('click', (e)=>{
+        e.preventDefault()
         octValuesSelectors[index].value = octValuesSelectors[index].textContent--
+        selectedOctaves[index] = octValuesSelectors[index].textContent
+        console.log(selectedOctaves)
     })
 })
 

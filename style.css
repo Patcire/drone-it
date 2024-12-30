@@ -214,7 +214,7 @@ main{
   /*background-color: blue;*/
 }
 
-.seq__oct-buttons{
+.seq__oct-plus-buttons, .seq__oct-minus-buttons{
   width: 50%;
   background: none;
   border: none;
