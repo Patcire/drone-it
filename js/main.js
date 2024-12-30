@@ -15,10 +15,12 @@ let stepTime
 let stepSelector = []
 let gainValue = 0
 let selectedOctaves = ['4', '4', '4', '4', '4', '4', '4', '4']
-let sequenceOfNotes = [`E${selectedOctaves[0]}`, `E${selectedOctaves[1]}`, `E${selectedOctaves[2]}`, `E${selectedOctaves[3]}`, `E${selectedOctaves[4]}`, `E${selectedOctaves[5]}`, `E${selectedOctaves[6]}`, `E${selectedOctaves[7]}`]
+let sequenceOfNotes = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E' ]
 const waveforms = ['sine', 'square', 'triangle', 'saw']
 let selectedWaveform = 'sine'
+
 // synth variables (tone.js objects)
+
 const finalNodeOfChain = new Tone.Gain().toDestination()
 const synth = new Tone.FMSynth().connect(finalNodeOfChain)
 const osc = new Tone.Oscillator().connect(finalNodeOfChain)
@@ -41,7 +43,7 @@ const octPlusButtons =  document.querySelectorAll('.seq__oct-plus-buttons')
 const octMinusButtons =  document.querySelectorAll('.seq__oct-minus-buttons')
 const octValuesSelectors = document.querySelectorAll('.seq__oct-value')
 const waveformSelectors = document.querySelectorAll('.waveform')
-
+const selectOptions = document.querySelectorAll('.seq__note *')
 // methods
 
 const adjustGain = (gainValue) =>{
@@ -50,7 +52,7 @@ const adjustGain = (gainValue) =>{
 
 const playSynth = () => {
 
-    synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1], "8n")
+    synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1]+selectedOctaves[stepCounter-1], "8n")
     osc.start()
     osc2.baseType = selectedWaveform
     osc2.start()
@@ -142,8 +144,7 @@ volumeInput.addEventListener('input', (e) => {
 noteSelectors.forEach( (element, index) => {
     element.addEventListener("change", (e) => {
         e.preventDefault()
-        sequenceOfNotes[index] = (e.target.value)
-        console.log(sequenceOfNotes)
+        sequenceOfNotes[index] = e.target.value
     })
 })
 
