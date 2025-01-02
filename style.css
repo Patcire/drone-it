@@ -286,6 +286,12 @@ main{
   background-color: var(--accent-color);
 }
 
+.limit-reached{
+  color: #FFD369;
+  transform: scale(1.09);
+  animation: ease-in-out;
+}
+
 .effects{
   width: 100%;
   margin: 3rem auto 0;

@@ -1,4 +1,5 @@
 import * as Tone from "tone";
+import {addTemporalStyles} from "./helpers.js";
 
 
 /*************************************************/
@@ -90,8 +91,9 @@ const handleOctavePlusSelection = (index) => {
         octValuesSelectors[index].value = octValuesSelectors[index].textContent++
         selectedOctaves[index] = octValuesSelectors[index].textContent
         handleOptionOctaves(index)
+        return
     }
-    // to do: apply styles when max octave is reached
+    addTemporalStyles(octValuesSelectors[index], 'limit-reached')
 }
 
 const handleOctaveMinusSelection = (index) => {
@@ -99,8 +101,9 @@ const handleOctaveMinusSelection = (index) => {
         octValuesSelectors[index].value = octValuesSelectors[index].textContent--
         selectedOctaves[index] = octValuesSelectors[index].textContent
         handleOptionOctaves(index)
+        return
     }
-    // to do: apply styles when min octave is reached
+    addTemporalStyles(octValuesSelectors[index], 'limit-reached')
 }
 
 const cleanAndStopSequencer = () => {
@@ -174,7 +177,8 @@ octMinusButtons.forEach((el, index) => {
 waveformSelectors.forEach((element, index) =>{
     element.addEventListener("click", (e) => {
         e.preventDefault()
-        selectedWaveform = (e.target.id)
+        selectedWaveform = e.target.id
+        console.log(e.target.id)
     })
 })
 
