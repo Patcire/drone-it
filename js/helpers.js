@@ -1,10 +1,10 @@
 
-export const addTemporalStyles = (selector, style) => {
-    setTimeout(()=>{
-        selector.classList.add(style)
-    },100)
+export const addTemporalStyles = (selector, style, time) => {
 
+    selector.classList.add(style)
     setTimeout(()=>{
         selector.classList.remove(style)
-    },500)
+    },time)
+
+
 }

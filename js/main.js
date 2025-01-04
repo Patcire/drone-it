@@ -32,6 +32,7 @@ const signal = new Tone.Signal(440).connect(timesTwo)
 // selectors
 
 const bpmInput = document.querySelector("#bpm")
+const bpmOutput = document.querySelector(".bpm-output")
 const volumeInput = document.querySelector("#volume")
 const onButton = document.querySelector('.on')
 const sineButton = document.querySelector('#sine')
@@ -93,7 +94,7 @@ const handleOctavePlusSelection = (index) => {
         handleOptionOctaves(index)
         return
     }
-    addTemporalStyles(octValuesSelectors[index], 'limit-reached')
+    addTemporalStyles(octValuesSelectors[index], 'limit-reached', 500)
 }
 
 const handleOctaveMinusSelection = (index) => {
@@ -103,7 +104,7 @@ const handleOctaveMinusSelection = (index) => {
         handleOptionOctaves(index)
         return
     }
-    addTemporalStyles(octValuesSelectors[index], 'limit-reached')
+    addTemporalStyles(octValuesSelectors[index], 'limit-reached', 500)
 }
 
 const cleanAndStopSequencer = () => {
@@ -143,6 +144,8 @@ offButton.addEventListener("click", () => {
 
 bpmInput.addEventListener('input', (e) => {
     bpm = e.target.value
+    addTemporalStyles(bpmOutput, 'visibility', 700)
+    bpmOutput.value = bpm
     let stepStorage = stepCounter
     cleanAndStopSequencer()
     stepCounter = stepStorage

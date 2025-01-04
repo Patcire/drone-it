@@ -104,6 +104,13 @@ h1, h2, h3, h4 {
 
 }
 
+header .label-cont{
+  /*background-color: cornflowerblue;*/
+  width: 100%;
+  display: flex;
+  justify-content: start;
+}
+
 #bpm, #volume,#reverb,#destroyer,#delay  {
   -webkit-appearance: none;
   height: 6px;
@@ -125,6 +132,17 @@ h1, h2, h3, h4 {
 }
 #bpm{
   width: 260px;
+}
+
+.bpm-output{
+  /*background-color: blueviolet;*/
+  align-self: end;
+  color: var(--accent-color);
+  visibility: hidden;
+}
+
+.visibility{
+  visibility: visible;
 }
 
 /* Main */
