@@ -180,8 +180,17 @@ octMinusButtons.forEach((el, index) => {
 waveformSelectors.forEach((element, index) =>{
     element.addEventListener("click", (e) => {
         e.preventDefault()
+        let previousWaveform = selectedWaveform
+        // todo: function to catch the correct selector
         selectedWaveform = e.target.id
-        console.log(e.target.id)
+        console.log(selectedWaveform)
+        e.target.children.item(0).src = '/'+selectedWaveform+'-yellow.svg'
+
+        //selectedWaveform = e.target.id
+        //let newButtonClicked =
+        //window[lastButtonClicked].src = `/${selectedWaveform}-yellow.svg`
+        //console.log(e.target.firstChild.src)
+        //console.log(e.target.id)
     })
 })
 
