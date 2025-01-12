@@ -185,12 +185,6 @@ waveformSelectors.forEach((element, index) =>{
         selectedWaveform = e.target.id
         console.log(selectedWaveform)
         e.target.children.item(0).src = '/'+selectedWaveform+'-yellow.svg'
-
-        //selectedWaveform = e.target.id
-        //let newButtonClicked =
-        //window[lastButtonClicked].src = `/${selectedWaveform}-yellow.svg`
-        //console.log(e.target.firstChild.src)
-        //console.log(e.target.id)
     })
 })
 
