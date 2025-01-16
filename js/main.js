@@ -46,6 +46,12 @@ const octMinusButtons =  document.querySelectorAll('.seq__oct-minus-buttons')
 const octValuesSelectors = document.querySelectorAll('.seq__oct-value')
 const waveformSelectors = document.querySelectorAll('.waveform')
 const selectOptions = document.querySelectorAll('.seq__note')
+const reverbIconSelector = (document.querySelectorAll('.effect__img')).item(0)
+const reverbInputSelector = (document.querySelectorAll('.effect__input')).item(0)
+const destroyerIconSelector = (document.querySelectorAll('.effect__img')).item(1)
+const destroyerInputSelector = (document.querySelectorAll('.effect__input')).item(1)
+const delayIconSelector = (document.querySelectorAll('.effect__img')).item(2)
+const delayInputSelector = (document.querySelectorAll('.effect__input')).item(2)
 
 // methods
 
@@ -187,6 +193,10 @@ waveformSelectors.forEach((element, index) =>{
         e.target.children.item(0).src = '/'+selectedWaveform+'-yellow.svg'
     })
 })
+
+reverbInputSelector.addEventListener('input', e =>{
+    //reverbIconSelector.height = e.target.value
+} )
 
 document.addEventListener("DOMContentLoaded", function() {
     stepSelector = document.querySelectorAll(".seq__step")

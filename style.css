@@ -331,6 +331,12 @@ main{
   align-items: center;
   /*background-color: blueviolet;*/
 
+  & div{
+    max-height: fit-content;
+    max-width: fit-content;
+    background-color: orange;
+  }
+
   & img{
     /*background-color: chartreuse;*/
     padding-left: 25%;
