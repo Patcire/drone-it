@@ -205,9 +205,11 @@ main{
 }
 
 .seq{
-  display: block;
-  width: 90%;
-  margin: 3rem auto 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  padding: 30px 5% 0 5%;
 }
 
 .seq__cell{
@@ -223,17 +225,22 @@ main{
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .seq__oct-actions{
   width: 100%;
   display: flex;
+  justify-content: center;
   /*background-color: blue;*/
 }
 
 .seq__oct-plus-buttons, .seq__oct-minus-buttons{
-  width: 50%;
+  width: 0;
+  /*background-color: orange;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: none;
   border: none;
   color: var(--gray);
@@ -246,6 +253,10 @@ main{
 .seq__oct-buttons:hover{
   cursor: pointer;
   transform: scale(1.05);
+}
+
+.seq__oct-value{
+  padding: 0 3% 0 3%;
 }
 
 .seq__row-notes{
@@ -312,16 +323,17 @@ main{
 
 .effects{
   width: 100%;
-  margin: 3rem auto 0;
+  padding-top: 20px;
   /*background-color: orange;*/
 }
 
 .effects-container{
-  width: 90%;
-  margin: 0 auto;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  /*background-color: white;*/
+  align-content: center;
+  padding: 6px 5% 0 5%;
+/*  background-color: white;*/
 }
 
 .effect{
@@ -333,12 +345,16 @@ main{
 
   & div{
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /*background-color: orange;*/
+    padding: 5% 0 5% 0;
   }
 
   & img{
-    /*background-color: chartreuse;*/
-    padding-left: 25%;
+   /* padding-left: 25%;*/
   }
 
   & h4{
@@ -348,7 +364,7 @@ main{
 }
 
 .prob{
-  background-color: cornflowerblue;
+  /*background-color: cornflowerblue;*/
 }
 
 
