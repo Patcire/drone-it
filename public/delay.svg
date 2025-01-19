@@ -1,34 +1,6 @@
-<svg width="91" height="74" viewBox="0 0 91 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_dddd_13_126)">
-<rect x="33.5" y="10.5" width="25" height="25" rx="6.5" transform="rotate(90 33.5 10.5)" stroke="#EEEEEE"/>
-<rect x="20.5" y="4.5" width="18" height="18" rx="4.5" transform="rotate(90 20.5 4.5)" stroke="#EEEEEE"/>
-<rect x="46.5" y="17.5" width="28" height="28" rx="6.5" transform="rotate(90 46.5 17.5)" stroke="#EEEEEE"/>
-<rect x="57.5" y="23.5" width="31" height="30" rx="6.5" transform="rotate(90 57.5 23.5)" stroke="#EEEEEE"/>
-</g>
-<defs>
-<filter id="filter0_dddd_13_126" x="0" y="0" width="91" height="74" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="1" dy="1"/>
-<feGaussianBlur stdDeviation="1.5"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_13_126"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="6" dy="2"/>
-<feGaussianBlur stdDeviation="3"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.09 0"/>
-<feBlend mode="normal" in2="effect1_dropShadow_13_126" result="effect2_dropShadow_13_126"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="13" dy="5"/>
-<feGaussianBlur stdDeviation="4"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0"/>
-<feBlend mode="normal" in2="effect2_dropShadow_13_126" result="effect3_dropShadow_13_126"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dx="23" dy="9"/>
-<feGaussianBlur stdDeviation="5"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.01 0"/>
-<feBlend mode="normal" in2="effect3_dropShadow_13_126" result="effect4_dropShadow_13_126"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_13_126" result="shape"/>
-</filter>
-</defs>
+<svg width="63" height="56" viewBox="0 0 63 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M34.875 27.451V14.2745C34.875 10.6359 31.8529 7.68627 28.125 7.68627H14.625C10.8971 7.68627 7.875 10.6359 7.875 14.2745V27.451C7.875 31.0896 10.8971 34.0392 14.625 34.0392H28.125C31.8529 34.0392 34.875 31.0896 34.875 27.451ZM36 14.2745C36 10.0295 32.4742 6.58824 28.125 6.58824H14.625C10.2758 6.58824 6.75 10.0295 6.75 14.2745V27.451C6.75 31.696 10.2758 35.1373 14.625 35.1373H28.125C32.4742 35.1373 36 31.696 36 27.451V14.2745Z" fill="#EEEEEE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M20.25 15.3725V5.4902C20.25 3.06448 18.2353 1.09804 15.75 1.09804H5.625C3.13972 1.09804 1.125 3.06448 1.125 5.4902V15.3725C1.125 17.7983 3.13972 19.7647 5.625 19.7647H15.75C18.2353 19.7647 20.25 17.7983 20.25 15.3725ZM21.375 5.4902C21.375 2.45804 18.8566 0 15.75 0H5.625C2.5184 0 0 2.45804 0 5.4902V15.3725C0 18.4047 2.5184 20.8627 5.625 20.8627H15.75C18.8566 20.8627 21.375 18.4047 21.375 15.3725V5.4902Z" fill="#EEEEEE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M49.5 38.4314V21.9608C49.5 18.3222 46.4779 15.3725 42.75 15.3725H25.875C22.1471 15.3725 19.125 18.3222 19.125 21.9608V38.4314C19.125 42.07 22.1471 45.0196 25.875 45.0196H42.75C46.4779 45.0196 49.5 42.07 49.5 38.4314ZM50.625 21.9608C50.625 17.7158 47.0992 14.2745 42.75 14.2745H25.875C21.5258 14.2745 18 17.7158 18 21.9608V38.4314C18 42.6764 21.5258 46.1176 25.875 46.1176H42.75C47.0992 46.1176 50.625 42.6764 50.625 38.4314V21.9608Z" fill="#EEEEEE"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M61.875 48.3137V28.549C61.875 24.9104 58.8529 21.9608 55.125 21.9608H36C32.2721 21.9608 29.25 24.9104 29.25 28.549V48.3137C29.25 51.9523 32.2721 54.902 36 54.902H55.125C58.8529 54.902 61.875 51.9523 61.875 48.3137ZM63 28.549C63 24.304 59.4742 20.8627 55.125 20.8627H36C31.6508 20.8627 28.125 24.304 28.125 28.549V48.3137C28.125 52.5587 31.6508 56 36 56H55.125C59.4742 56 63 52.5587 63 48.3137V28.549Z" fill="#EEEEEE"/>
 </svg>

@@ -332,9 +332,8 @@ main{
   /*background-color: blueviolet;*/
 
   & div{
-    max-height: fit-content;
-    max-width: fit-content;
-    background-color: orange;
+    width: 100%;
+    /*background-color: orange;*/
   }
 
   & img{
@@ -346,6 +345,10 @@ main{
     color: transparent;
     -webkit-text-stroke: 0.0005px var(--secondary-color);
   }
+}
+
+.prob{
+  background-color: cornflowerblue;
 }
 
 
