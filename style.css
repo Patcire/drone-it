@@ -185,8 +185,14 @@ main{
   width: 90%;
   margin: 0 auto  ;
   & h3{
-    font-size: 1rem;
-    letter-spacing: 1.5rem;
+    font-size: clamp(0.8rem, 1.2vw, 1.5rem);
+    letter-spacing: clamp(0.7rem, 1.5vw, 1.5rem);
+  }
+  .waveform__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
   }
   & .waveform{
     height: 20px;
@@ -325,6 +331,7 @@ main{
 .effects{
   width: 100%;
   padding-top: 20px;
+  /*padding-top: clamp(10px, 0.7vw, 25px);*/
   /*background-color: orange;*/
 }
 
@@ -333,8 +340,8 @@ main{
   flex-direction: row;
   justify-content: space-between;
   align-content: center;
-  padding: 6px 5% 0 5%;
-/*  background-color: white;*/
+  padding: clamp(0px, 2vw, 0px) 5% 0 5%;
+  /*background-color: white;*/
 }
 
 .effect{
@@ -353,12 +360,11 @@ main{
     justify-content: center;
     align-items: center;
     /*background-color: orange;*/
-    padding: 0% 0 0% 0;
   }
   & .input-cont{
     width: 90%;
     padding-top: 10%;
-    /*background-color: #222831;*/
+    /*background-color: #222831*/;
   }
 
   & img{
@@ -368,7 +374,9 @@ main{
   }
 
   & h4{
-    font-size: 1rem;
+    background-color: #393E46;
+    /*margin-top: clamp(1rem, 1vw, 0.6rem);*/
+    font-size: clamp(0.8rem, 1.2vw ,1.5rem);
     color: transparent;
     -webkit-text-stroke: 0.0005px var(--secondary-color);
   }
