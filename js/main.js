@@ -19,6 +19,7 @@ let selectedOctaves = ['4', '4', '4', '4', '4', '4', '4', '4']
 let sequenceOfNotes = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E' ]
 const waveforms = ['sine', 'square', 'triangle', 'saw']
 let selectedWaveform = 'sine'
+let revAmount = 0.1
 
 // synth variables (tone.js objects)
 
@@ -28,6 +29,7 @@ const osc = new Tone.Oscillator().connect(finalNodeOfChain)
 const osc2 =  new Tone.Oscillator("A2", selectedWaveform).connect(finalNodeOfChain)
 const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo)
+const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
 
 // selectors
 
@@ -196,6 +198,15 @@ waveformSelectors.forEach((element, index) =>{
 
 reverbInputSelector.addEventListener('input', e =>{
     //reverbIconSelector.height = e.target.value
+    e.preventDefault()
+    revAmount = e.target.value
+   if (revAmount === "0.01"){
+       synth.disconnect(rev)
+       revAmount = 0.001 // the api minimun
+       return
+   }
+   rev["decay"] = revAmount
+   synth.chain(rev)
 } )
 
 document.addEventListener("DOMContentLoaded", function() {
