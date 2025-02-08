@@ -20,6 +20,7 @@ let sequenceOfNotes = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E' ]
 const waveforms = ['sine', 'square', 'triangle', 'saw']
 let selectedWaveform = 'sine'
 let revAmount = 0.1
+let destAmount = 16
 
 // synth variables (tone.js objects)
 
@@ -30,6 +31,7 @@ const osc2 =  new Tone.Oscillator("A2", selectedWaveform).connect(finalNodeOfCha
 const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo)
 const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
+const dest = new Tone.BitCrusher(destAmount).connect(finalNodeOfChain)
 
 // selectors
 
@@ -208,6 +210,20 @@ reverbInputSelector.addEventListener('input', e =>{
    rev["decay"] = revAmount
    synth.chain(rev)
 } )
+
+destroyerInputSelector.addEventListener('input', e =>{
+    e.preventDefault()
+    destAmount = e.target.value
+    console.log('destamount: ', destAmount)
+    if (destAmount === "0"){
+        synth.disconnect(dest)
+        destAmount = 16
+        return
+    }
+    dest.set({wet: 0.8, bits: destAmount})
+    synth.chain(dest)
+} )
+
 
 document.addEventListener("DOMContentLoaded", function() {
     stepSelector = document.querySelectorAll(".seq__step")
