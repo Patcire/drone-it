@@ -23,6 +23,7 @@ let revAmount = 0.1
 let reversedBitValue = 16
 let oldBitValue = 2
 let actualBitValue = 0
+let delayOnSeconds = 0
 
 // synth variables (tone.js objects)
 
@@ -34,6 +35,7 @@ const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequen
 const signal = new Tone.Signal(440).connect(timesTwo)
 const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
 const dest = new Tone.BitCrusher({bits: reversedBitValue}).connect(finalNodeOfChain)
+let delay = new Tone.Delay({delayTime: delayOnSeconds}).connect(finalNodeOfChain)
 
 // selectors
 
@@ -233,6 +235,22 @@ destroyerInputSelector.addEventListener('input', e =>{
     dest.set({bits: reversedBitValue, wet: 0.8})
     synth.chain(dest)
     oldBitValue = e.target.value
+} )
+
+delayInputSelector.addEventListener('input', e =>{
+    console.log(delay.delayTime)
+    e.preventDefault()
+    delayOnSeconds = e.target.value
+    console.log(delayOnSeconds)
+    if (delayOnSeconds === "0"){
+        console.log('bye')
+        synth.disconnect(delay)
+        delayOnSeconds = 0
+        return
+    }
+    // delay web API has no set, we need to initialize another constructor
+    delay.delayTime.value = delayOnSeconds
+    synth.chain(delay)
 } )
 
 
