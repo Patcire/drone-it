@@ -230,9 +230,6 @@ destroyerInputSelector.addEventListener('input', e =>{
     const maxBitsValue = 12
     actualBitValue = e.target.value
     reversedBitValue = maxBitsValue - actualBitValue
-    console.log('actual', e.target.value)
-    console.log('old: ', oldBitValue)
-    console.log('real bits (reverse): ', reversedBitValue)
     dest.set({bits: reversedBitValue, wet: 0.8})
     synth.chain(dest)
     oldBitValue = e.target.value
