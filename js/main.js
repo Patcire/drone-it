@@ -97,7 +97,9 @@ const handleStepsVisualStyles = () => {
 const handleOptionOctaves = (index) =>{
     const options = selectOptions[index].querySelectorAll('option')
     options.forEach((el)=> {
-        el.textContent = el.textContent[0]+selectedOctaves[index]
+        if (el.textContent !== "--"){
+            el.textContent = el.textContent[0]+selectedOctaves[index]
+        }
     })
 }
 
