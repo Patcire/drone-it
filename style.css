@@ -378,7 +378,6 @@ main{
   }
 
   & h4{
-    background-color: #393E46;
     /*margin-top: clamp(1rem, 1vw, 0.6rem);*/
     font-size: clamp(0.8rem, 1.2vw ,1.5rem);
     color: transparent;
