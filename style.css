@@ -172,6 +172,10 @@ main{
     border: 1px solid var(--secondary-color);
     width: 90%;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     /*background-color: bisque;*/
   }
 
@@ -457,6 +461,11 @@ main{
 
     & .section{
       width: 90%;
+      height: 26.5rem;
+    }
+
+    & .section:first-child{
+      display: none;
     }
 
     & .section-header{
@@ -469,7 +478,8 @@ main{
     }
 
     & .screen {
-      height: 100px;
+      /*height: 100px;*/
+      display: none;
     }
 
   }
