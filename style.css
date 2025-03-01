@@ -411,6 +411,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 2%;
 
     & img{
       height: 100px;
@@ -435,11 +436,13 @@ main{
 
     & .slider-container{
       width: 90%;
+      align-items: center;
+      gap: 0;
       & .bpm-text {
-        padding: 0;
+        padding: 1rem 0 0 0;
       }
       & .vol-text {
-        padding: 0;
+        padding: 1rem 0 1rem 0;
       }
     }
 
