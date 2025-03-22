@@ -86,7 +86,6 @@ const handleStepsVisualStyles = () => {
 
     if (stepSelector[stepCounter-1].textContent === stepCounter.toString()) {
 
-        /*console.log('actual step', stepSelector[stepCounter - 1].textContent)*/
         stepSelector[stepCounter - 1].classList.add("seq__step-active")
         stepSelector[stepCounter-1].textContent>"1" && stepSelector[stepCounter-2].classList.remove("seq__step-active")
 
