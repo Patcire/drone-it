@@ -17,7 +17,6 @@ let stepSelector = []
 let gainValue = 0
 let selectedOctaves = ['4', '4', '4', '4', '4', '4', '4', '4']
 let sequenceOfNotes = ['E', 'E', 'E', 'E', 'E', 'E', 'E', 'E' ]
-const waveforms = ['sine', 'square', 'triangle', 'saw']
 let selectedWaveform = 'sine'
 let revAmount = 0.1
 let reversedBitValue = 16
