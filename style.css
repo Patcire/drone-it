@@ -159,7 +159,7 @@ main{
   /*background: #FFD369;*/
   gap: 2px;
   & .section{
-   background: linear-gradient(#222831 50%, #3B5A72 100%);
+    background: linear-gradient(#222831 50%, #3B5A72 100%);
     width: 50%;
     height: 33rem;
     max-height: 600px;
@@ -168,7 +168,9 @@ main{
   }
   & .screen{
     margin: 3rem auto 0;
-    height: 355px;
+    aspect-ratio: 12/9;
+    max-height: 360px;
+    min-height: 315px;
     border: 1px solid var(--secondary-color);
     width: 90%;
     border-radius: 10px;
