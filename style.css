@@ -365,6 +365,9 @@ main{
     align-items: center;
     /*background-color: orange;*/
   }
+  & .icon-cont{
+    height: 56px; /*height of icon, to prevent CLS*/
+  }
   & .input-cont{
     width: 90%;
     padding-top: 10%;
