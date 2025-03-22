@@ -471,7 +471,6 @@ main{
 
     & .section-header{
       width: 100%;
-      flex-direction: column;
     }
 
     .seq{
@@ -492,6 +491,10 @@ main{
     & .section {
       width: 90%;
       height: 26.5rem;
+    }
+    & .section-header{
+      width: 100%;
+      flex-direction: column;
     }
   }
 }
