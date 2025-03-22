@@ -35,7 +35,7 @@ const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequen
 const signal = new Tone.Signal(440).connect(timesTwo)
 const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
 const dest = new Tone.BitCrusher({bits: reversedBitValue}).connect(finalNodeOfChain)
-let delay = new Tone.Delay({delayTime: delayOnSeconds}).connect(finalNodeOfChain)
+let delay = new Tone.PingPongDelay({delayTime: delayOnSeconds, feedback:0}).connect(finalNodeOfChain)
 
 // selectors
 
@@ -218,8 +218,8 @@ reverbInputSelector.addEventListener('input', e =>{
 
 destroyerInputSelector.addEventListener('input', e =>{
     // destroyer is only a bitcrusher,
-    // so with least bits "more destroyed the audio is"
-    // on html input range, when user drag to the right, the value grow
+    // so with the least bits "more destroyed the audio is"
+    // on html input range, when user drag to the right, the value grow,
     // but we want that when the user drag the range to the right
     // feel his music more "destroyed". In short, we must manipulate the range to inverse
 
@@ -239,19 +239,18 @@ destroyerInputSelector.addEventListener('input', e =>{
 } )
 
 delayInputSelector.addEventListener('input', e =>{
-    console.log(delay.delayTime)
     e.preventDefault()
     delayOnSeconds = e.target.value
-    console.log(delayOnSeconds)
     if (delayOnSeconds === "0"){
-        console.log('bye')
         synth.disconnect(delay)
         delayOnSeconds = 0
         return
     }
-    // delay web API has no set, we need to initialize another constructor
+
     delay.delayTime.value = delayOnSeconds
+    delay.feedback.value = delayOnSeconds <= 0.5 ?  delay.delayTime.value + 0.3 : 0.9
     synth.chain(delay)
+
 } )
 
 
