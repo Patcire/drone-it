@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import {addTemporalStyles} from "./helpers.js";
+import {addTemporalStyles, convertBufferSampleIntoCoordinates} from "./helpers.js";
 
 
 /*************************************************/
@@ -71,6 +71,7 @@ const adjustGain = (gainValue) =>{
 const playSynth = () => {
 
     synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1]+selectedOctaves[stepCounter-1], "8n")
+    synth.connect(analyser)
     osc.start()
     osc2.baseType = selectedWaveform
     osc2.start()
@@ -157,13 +158,18 @@ const paintOnCanvas = () =>{
 
     clearCanvas()
     const context = canvas.getContext('2d')
-    context.lineWidth = 2
+    context.lineWidth = 1
     context.strokeStyle = 'black'
     context.beginPath()
-    context.moveTo(0, canvas.height/2)
-    context.lineTo(canvas.width, canvas.height/2)
+    context.moveTo(0, canvas.height / 2)
+    console.log(analyser.size)
+    for (let i=0; i < analyser.size; i++){
+        const {x, y} = convertBufferSampleIntoCoordinates(i, analyser, canvas)
+        //context.lineTo(x, y)
+        console.log(x, y)
+        if (i !== 0) context.lineTo(x, y)
+    }
     context.stroke()
-
 }
 
 // events
