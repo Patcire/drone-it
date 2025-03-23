@@ -35,6 +35,7 @@ const signal = new Tone.Signal(440).connect(timesTwo)
 const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
 const dest = new Tone.BitCrusher({bits: reversedBitValue}).connect(finalNodeOfChain)
 let delay = new Tone.PingPongDelay({delayTime: delayOnSeconds, feedback:0}).connect(finalNodeOfChain)
+const analyser = new Tone.Analyser("waveform", 1024)
 
 // selectors
 
@@ -59,6 +60,7 @@ const destroyerIconSelector = (document.querySelectorAll('.effect__img')).item(1
 const destroyerInputSelector = (document.querySelectorAll('.effect__input')).item(1)
 const delayIconSelector = (document.querySelectorAll('.effect__img')).item(2)
 const delayInputSelector = (document.querySelectorAll('.effect__input')).item(2)
+const canvas = document.querySelector('.screen')
 
 // methods
 
@@ -72,6 +74,7 @@ const playSynth = () => {
     osc.start()
     osc2.baseType = selectedWaveform
     osc2.start()
+    paintOnCanvas()
 
 }
 
@@ -145,6 +148,23 @@ const startSequencer = () => {
 
 }
 
+const clearCanvas = () => {
+    const context = canvas.getContext('2d')
+    context.clearRect(0, 0, canvas.width, canvas.height)
+}
+
+const paintOnCanvas = () =>{
+
+    clearCanvas()
+    const context = canvas.getContext('2d')
+    context.lineWidth = 2
+    context.strokeStyle = 'black'
+    context.beginPath()
+    context.moveTo(0, canvas.height/2)
+    context.lineTo(canvas.width, canvas.height/2)
+    context.stroke()
+
+}
 
 // events
 
@@ -153,6 +173,7 @@ onButton.addEventListener("click", () => {startSequencer()})
 offButton.addEventListener("click", () => {
     cleanAndStopSequencer()
     stopAllSynthParameters()
+    clearCanvas()
 })
 
 

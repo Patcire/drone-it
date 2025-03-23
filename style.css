@@ -178,7 +178,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*background-color: bisque;*/
+    background-color: var(--gray);
   }
 
 }
@@ -478,7 +478,6 @@ main{
     }
 
     & .screen {
-      /*height: 100px;*/
       display: none;
     }
 
