@@ -149,27 +149,23 @@ const startSequencer = () => {
 
 }
 
-const clearCanvas = () => {
-    const context = canvas.getContext('2d')
+const clearCanvas = (context) => {
     context.clearRect(0, 0, canvas.width, canvas.height)
 }
 
 const paintOnCanvas = () =>{
-
-    clearCanvas()
     const context = canvas.getContext('2d')
+    const path = new Path2D()
+    clearCanvas(context)
+    requestAnimationFrame(paintOnCanvas)
     context.lineWidth = 1
     context.strokeStyle = 'black'
-    context.beginPath()
-    context.moveTo(0, canvas.height / 2)
-    console.log(analyser.size)
+    path.lineTo(0, canvas.height / 2)
     for (let i=0; i < analyser.size; i++){
         const {x, y} = convertBufferSampleIntoCoordinates(i, analyser, canvas)
-        //context.lineTo(x, y)
-        console.log(x, y)
-        if (i !== 0) context.lineTo(x, y)
+        path.lineTo(x, y)
     }
-    context.stroke()
+    context.stroke(path)
 }
 
 // events
@@ -179,7 +175,8 @@ onButton.addEventListener("click", () => {startSequencer()})
 offButton.addEventListener("click", () => {
     cleanAndStopSequencer()
     stopAllSynthParameters()
-    clearCanvas()
+    const context = canvas.getContext('2d')
+    clearCanvas(context)
 })
 
 
