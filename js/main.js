@@ -23,6 +23,8 @@ let reversedBitValue = 16
 let oldBitValue = 2
 let actualBitValue = 0
 let delayOnSeconds = 0
+let animationID = null
+let context = null
 
 // synth variables (tone.js objects)
 
@@ -35,7 +37,7 @@ const signal = new Tone.Signal(440).connect(timesTwo)
 const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
 const dest = new Tone.BitCrusher({bits: reversedBitValue}).connect(finalNodeOfChain)
 let delay = new Tone.PingPongDelay({delayTime: delayOnSeconds, feedback:0}).connect(finalNodeOfChain)
-const analyser = new Tone.Analyser("waveform", 1024)
+const analyser = new Tone.Analyser("waveform", 256)
 
 // selectors
 
@@ -69,19 +71,17 @@ const adjustGain = (gainValue) =>{
 }
 
 const playSynth = () => {
-
+    console.log('play')
     synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1]+selectedOctaves[stepCounter-1], "8n")
     synth.connect(analyser)
     osc.start()
     osc2.baseType = selectedWaveform
     osc2.start()
-    paintOnCanvas()
 
 }
 
 const stopAllSynthParameters = () =>{
     osc2.stop()
-
 }
 
 const handleStepsVisualStyles = () => {
@@ -146,6 +146,7 @@ const startSequencer = () => {
         stepCounter<8 ? stepCounter++ : stepCounter = 1
 
     }, stepTime)
+    paintOnCanvas()
 
 }
 
@@ -154,18 +155,18 @@ const clearCanvas = (context) => {
 }
 
 const paintOnCanvas = () =>{
-    const context = canvas.getContext('2d')
+    context = canvas.getContext('2d')
     const path = new Path2D()
     clearCanvas(context)
-    requestAnimationFrame(paintOnCanvas)
-    context.lineWidth = 1
+    context.lineWidth = 2.5
     context.strokeStyle = 'black'
-    path.lineTo(0, canvas.height / 2)
+    path.moveTo(0, canvas.height/2)
     for (let i=0; i < analyser.size; i++){
         const {x, y} = convertBufferSampleIntoCoordinates(i, analyser, canvas)
-        path.lineTo(x, y)
+        path.lineTo(x, y/2)
     }
     context.stroke(path)
+    animationID = requestAnimationFrame(paintOnCanvas)
 }
 
 // events
@@ -175,10 +176,9 @@ onButton.addEventListener("click", () => {startSequencer()})
 offButton.addEventListener("click", () => {
     cleanAndStopSequencer()
     stopAllSynthParameters()
-    const context = canvas.getContext('2d')
     clearCanvas(context)
+    cancelAnimationFrame(animationID)
 })
-
 
 bpmInput.addEventListener('input', (e) => {
     bpm = e.target.value
