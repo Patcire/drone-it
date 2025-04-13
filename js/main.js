@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import {addTemporalStyles, convertBufferSampleIntoCoordinates} from "./helpers.js";
+import {addTemporalStyles, convertBufferSampleIntoCoordinates, setContextStyles} from "./helpers.js";
 
 
 /*************************************************/
@@ -25,6 +25,12 @@ let actualBitValue = 0
 let delayOnSeconds = 0
 let animationID = null
 let context = null
+let lineWidth = 2
+let strokeColor = '#393E46'
+let shadowColor = 'black'
+let shadowBlur = 3
+let offX= 0
+let offY = 2
 
 // synth variables (tone.js objects)
 
@@ -71,7 +77,6 @@ const adjustGain = (gainValue) =>{
 }
 
 const playSynth = () => {
-    console.log('play')
     synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1]+selectedOctaves[stepCounter-1], "8n")
     synth.connect(analyser)
     osc.start()
@@ -158,8 +163,7 @@ const paintOnCanvas = () =>{
     context = canvas.getContext('2d')
     const path = new Path2D()
     clearCanvas(context)
-    context.lineWidth = 2.5
-    context.strokeStyle = 'black'
+    context = setContextStyles(context, lineWidth, strokeColor, shadowColor, shadowBlur, offX, offY)
     path.moveTo(0, canvas.height/2)
     for (let i=0; i < analyser.size; i++){
         const {x, y} = convertBufferSampleIntoCoordinates(i, analyser, canvas)
@@ -230,13 +234,16 @@ reverbInputSelector.addEventListener('input', e =>{
     //reverbIconSelector.height = e.target.value
     e.preventDefault()
     revAmount = e.target.value
-   if (revAmount === "0.01"){
+    if (revAmount === "0.01"){
        synth.disconnect(rev)
        revAmount = 0.001 // the api minimun
        return
-   }
-   rev["decay"] = revAmount
-   synth.chain(rev)
+    }
+    rev["decay"] = revAmount
+    synth.chain(rev)
+    shadowBlur = revAmount * 1.2
+    offY = revAmount * 1.5
+
 } )
 
 destroyerInputSelector.addEventListener('input', e =>{
