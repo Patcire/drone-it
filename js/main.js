@@ -1,5 +1,5 @@
 import * as Tone from "tone";
-import {addTemporalStyles, convertBufferSampleIntoCoordinates, setContextStyles} from "./helpers.js";
+import { addTemporalStyles, convertBufferSampleIntoCoordinates, randomCanvasTransformation, setContextStyles } from "./helpers.js";
 
 
 /*************************************************/
@@ -231,7 +231,9 @@ waveformSelectors.forEach((element, index) =>{
 })
 
 reverbInputSelector.addEventListener('input', e =>{
-    //reverbIconSelector.height = e.target.value
+
+    // functionality
+    // reverbIconSelector.height = e.target.value
     e.preventDefault()
     revAmount = e.target.value
     if (revAmount === "0.01"){
@@ -241,6 +243,8 @@ reverbInputSelector.addEventListener('input', e =>{
     }
     rev["decay"] = revAmount
     synth.chain(rev)
+
+    // styles
     shadowBlur = revAmount * 1.2
     offY = revAmount * 1.5
 
@@ -258,6 +262,7 @@ destroyerInputSelector.addEventListener('input', e =>{
         synth.disconnect(dest)
         oldBitValue = 2
         actualBitValue = 0
+        context.setTransform(1, 0, 0, 1, 0, 0) //og values
         return
     }
     const maxBitsValue = 12
@@ -266,6 +271,11 @@ destroyerInputSelector.addEventListener('input', e =>{
     dest.set({bits: reversedBitValue, wet: 0.8})
     synth.chain(dest)
     oldBitValue = e.target.value
+
+    // styles
+    const oldTransformValues = context.getTransform()
+    console.log(oldTransformValues)
+    context.setTransform(1/oldBitValue*2, 1/oldBitValue/2, 0.5/oldBitValue*2, oldBitValue/12, 0, 0)
 } )
 
 delayInputSelector.addEventListener('input', e =>{

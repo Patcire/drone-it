@@ -1,3 +1,4 @@
+import {context} from "tone";
 
 export const addTemporalStyles = (selector, style, time) => {
     selector.classList.add(style)
@@ -21,4 +22,9 @@ export const convertBufferSampleIntoCoordinates = (sampleIndex, analyser, canvas
     const x = sampleIndex / analyser.size * canvas.width
     const y = (1 -analyser.getValue()[sampleIndex]) * canvas.height
     return {x, y}
+}
+
+export const randomCanvasTransformation = (context, ratio1, clearCanvas) =>{
+    const oldValue = context.getTransform()
+    context.setTransform(1, 0.2, 0.8, 1, 0, 0);
 }
