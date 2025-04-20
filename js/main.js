@@ -31,6 +31,8 @@ let shadowColor = 'black'
 let shadowBlur = 3
 let offX= 0
 let offY = 2
+let cleanGlitch = null
+let intervalGlitch = null
 
 // synth variables (tone.js objects)
 
@@ -262,7 +264,10 @@ destroyerInputSelector.addEventListener('input', e =>{
         synth.disconnect(dest)
         oldBitValue = 2
         actualBitValue = 0
+        console.log(cleanGlitch)
+        console.log(intervalGlitch)
         context.setTransform(1, 0, 0, 1, 0, 0) //og values
+        console.log(context.getTransform())
         return
     }
     const maxBitsValue = 12
@@ -272,10 +277,13 @@ destroyerInputSelector.addEventListener('input', e =>{
     synth.chain(dest)
     oldBitValue = e.target.value
 
-    // styles
-    const oldTransformValues = context.getTransform()
-    console.log(oldTransformValues)
-    context.setTransform(1/oldBitValue*2, 1/oldBitValue/2, 0.5/oldBitValue*2, oldBitValue/12, 0, 0)
+    // style
+    intervalGlitch = setInterval(()=>{
+        context.setTransform(1.5/reversedBitValue-2, 1/reversedBitValue, 3.5/reversedBitValue*2, reversedBitValue/7, 0, 0)
+    },200)
+    cleanGlitch = setInterval(()=>{
+        context.setTransform(1, 0, 0, 1, 0, 0) //og values
+    },300)
 } )
 
 delayInputSelector.addEventListener('input', e =>{
