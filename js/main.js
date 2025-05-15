@@ -283,7 +283,7 @@ destroyerInputSelector.addEventListener('input', e =>{
     // visual effect on canvas
     if (intervalGlitch === null){
         intervalGlitch = setInterval(()=>{
-            context.setTransform(1.5/reversedBitValue-2, 1/reversedBitValue, 3.5/reversedBitValue*2, reversedBitValue/7, 0, 0)
+            context.setTransform(1.5/reversedBitValue-2, 1/reversedBitValue, 3.5/reversedBitValue*2.6, reversedBitValue/7, 0, 0)
         },200)
 
         cleanGlitch = setInterval(()=>{
