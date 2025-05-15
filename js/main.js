@@ -84,7 +84,6 @@ const playSynth = () => {
     osc.start()
     osc2.baseType = selectedWaveform
     osc2.start()
-
 }
 
 const stopAllSynthParameters = () =>{
@@ -246,7 +245,7 @@ reverbInputSelector.addEventListener('input', e =>{
     rev["decay"] = revAmount
     synth.chain(rev)
 
-    // styles
+    // visual effect on canvas
     shadowBlur = revAmount * 1.2
     offY = revAmount * 1.5
 
@@ -261,15 +260,19 @@ destroyerInputSelector.addEventListener('input', e =>{
 
     e.preventDefault()
     if (e.target.value === "0"){
+        // audio
         synth.disconnect(dest)
         oldBitValue = 2
         actualBitValue = 0
-        console.log(cleanGlitch)
-        console.log(intervalGlitch)
+        // visual effect on canvas
         context.setTransform(1, 0, 0, 1, 0, 0) //og values
-        console.log(context.getTransform())
+        clearInterval(intervalGlitch)
+        clearInterval(cleanGlitch)
+        cleanGlitch = null
+        intervalGlitch = null
         return
     }
+    // audio
     const maxBitsValue = 12
     actualBitValue = e.target.value
     reversedBitValue = maxBitsValue - actualBitValue
@@ -277,14 +280,17 @@ destroyerInputSelector.addEventListener('input', e =>{
     synth.chain(dest)
     oldBitValue = e.target.value
 
-    // style
-    intervalGlitch = setInterval(()=>{
-        context.setTransform(1.5/reversedBitValue-2, 1/reversedBitValue, 3.5/reversedBitValue*2, reversedBitValue/7, 0, 0)
-    },200)
-    cleanGlitch = setInterval(()=>{
-        context.setTransform(1, 0, 0, 1, 0, 0) //og values
-    },300)
-} )
+    // visual effect on canvas
+    if (intervalGlitch === null){
+        intervalGlitch = setInterval(()=>{
+            context.setTransform(1.5/reversedBitValue-2, 1/reversedBitValue, 3.5/reversedBitValue*2, reversedBitValue/7, 0, 0)
+        },200)
+
+        cleanGlitch = setInterval(()=>{
+            context.setTransform(1, 0, 0, 1, 0, 0) //og values
+        },300)
+    }
+})
 
 delayInputSelector.addEventListener('input', e =>{
     e.preventDefault()
