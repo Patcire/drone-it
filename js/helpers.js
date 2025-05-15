@@ -1,4 +1,3 @@
-import {context} from "tone";
 
 export const addTemporalStyles = (selector, style, time) => {
     selector.classList.add(style)

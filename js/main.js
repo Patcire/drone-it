@@ -9,7 +9,7 @@ import { addTemporalStyles, convertBufferSampleIntoCoordinates, setContextStyles
 
 //  general variables
 
-let startedID
+let startedID = null
 let bpm = 60
 let stepCounter = 1
 let stepTime
@@ -136,13 +136,10 @@ const cleanAndStopSequencer = () => {
 const startSequencer = () => {
 
     stepTime = (60 / bpm ) * 1000
-
-    startedID =setInterval(() => {
-
+    startedID = setInterval(() => {
         handleStepsVisualStyles()
         playSynth()
         stepCounter<8 ? stepCounter++ : stepCounter = 1
-
     }, stepTime)
     paintOnCanvas()
 
@@ -188,7 +185,7 @@ bpmInput.addEventListener('input', (e) => {
     let stepStorage = stepCounter
     cleanAndStopSequencer()
     stepCounter = stepStorage
-    startSequencer()
+    startedID !== null && startSequencer()
 })
 
 volumeInput.addEventListener('input', (e) => {
