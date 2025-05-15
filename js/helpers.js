@@ -24,7 +24,3 @@ export const convertBufferSampleIntoCoordinates = (sampleIndex, analyser, canvas
     return {x, y}
 }
 
-export const randomCanvasTransformation = (context, ratio1, clearCanvas) =>{
-    const oldValue = context.getTransform()
-    context.setTransform(1, 0.2, 0.8, 1, 0, 0);
-}
