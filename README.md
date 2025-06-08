@@ -49,3 +49,12 @@ The screen feature that can be view on the web mode of the app is only an artist
 
 Altough the main and plain waveform of the sound is extracted from the synth internals objects, when you apply some FX the result view **is not** a fidelity representation of the actual waveform but **an artistic representation** of what effects made. 
 
+### 5. Credits and Licensing
+
+Code, icons and logo by Patcire. 
+
+Font used on logo and through the APP is "" by "".
+
+Everyone have permission to fork and mod the code fron this repo and use it to make their own *uncommercial* things. Only requirement is credit me :) Same with icons, they are free to use for no commercial projects (with credits).
+
+The use of the logo is not allowed.
