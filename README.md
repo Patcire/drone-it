@@ -53,7 +53,7 @@ Altough the main and plain waveform of the sound is extracted from the synth int
 
 Code, icons and logo by Patcire. 
 
-Font used on logo and through the APP is "" by "".
+Font used on logo and through the APP is "Sixtyfour" by "*Jens Kutílek*".
 
 Everyone have permission to fork and mod the code fron this repo and use it to make their own *uncommercial* things. Only requirement is credit me :) Same with icons, they are free to use for no commercial projects (with credits).
 
