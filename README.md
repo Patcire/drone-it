@@ -41,3 +41,11 @@ I divided the code in this sections to make it more maintainable:
 * ***3 - Selectors***: The variables that storage the UI HTML elements
 * ***4 - Methods***: all functions
 * ***5 - Events***: All the listeners that capture the events from user interaction
+
+
+### 4. Screen waveform view feature
+
+The screen feature that can be view on the web mode of the app is only an artistic addition to the synth.
+
+Altough the main and plain waveform of the sound is extracted from the synth internals objects, when you apply some FX the result view **is not** a fidelity representation of the actual waveform but **an artistic representation** of what effects made. 
+
