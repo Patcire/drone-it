@@ -67,3 +67,9 @@ Font used on logo and through the APP is "Sixtyfour" by "*Jens Kutílek*".
 Everyone have permission to fork and mod the code fron this repo and use it to make their own *uncommercial* things. Only requirement is credit me :) Same with icons, they are free to use for no commercial projects (with credits).
 
 The use of the logo is not allowed.
+
+### 7. A handmade web 
+
+This project is a handmaded web, no AI generated. It's important that internet remain for and from people and the web be more than a product, an artistic (and tolerant and respectful) expression of self and comunnities. 
+
+There are many groups of people embracing this philosophy and this projects has the lucky of be included in one amazing project [Hypertext.tv](https://github.com/evadecker/hypertext.tv) by @evadecker that pursues it. So, I encorauge you to visit it, contribute and think about what future do you want for the internet. 
