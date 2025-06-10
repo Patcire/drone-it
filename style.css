@@ -117,7 +117,7 @@ header .label-cont{
   background-color: var(--secondary-color);
   outline: none;
   width: inherit;
-  /* drag pointer*/
+  /* drag pointer on Chrome*/
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -125,6 +125,14 @@ header .label-cont{
     height: 15px;
     background: var(--secondary-color);
     cursor: pointer;
+  }
+  /* drag pointer on firefox */
+  &::-moz-range-thumb{
+    width: 5px;
+    height: 15px;
+    cursor: pointer;
+    border-radius: 0;
+    border: none;
   }
 }
 
