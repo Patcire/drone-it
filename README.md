@@ -13,7 +13,7 @@ easily.
 ***
 
 *Drone it* it's heavily focused on web standards and it's build with  **vanilla JS, HTML5, CSS3**. It also use
-*Tone.js* lib (a wrapper of native web audio api) to handle the
+[*Tone.js*](https://github.com/Tonejs/Tone.js) lib (a wrapper of native web audio api) to handle the
 synth internal objects.
 
 ### 2. How to Run locally
@@ -55,21 +55,22 @@ I divided the code in this sections to make it more maintainable:
 
 The screen feature that can be view on the web mode of the app is only an artistic addition to the synth.
 
-Altough the main and plain waveform of the sound is extracted from the synth internals objects, when you apply some FX the result view **is not** a fidelity representation of the actual waveform but **an artistic representation** of what effects made. 
+Altough the main and plain waveform of the sound is extracted from the synth internals object *Tone.analyser*, when you apply some FX the result view **is not** a fidelity representation of the actual waveform but **an artistic representation** of what effects made. 
 
 ### 6. Credits and Licensing
 ***
 
 Code, icons and logo by Patcire. 
 
-Font used on logo and through the APP is "Sixtyfour" by "*Jens Kutílek*".
+Font used on logo and through the APP is "Sixtyfour" by "*Jens Kutílek*". Here the [repo](https://github.com/jenskutilek/homecomputer-fonts/tree/master/Sixtyfour)
 
 Everyone have permission to fork and mod the code fron this repo and use it to make their own *uncommercial* things. Only requirement is credit me :) Same with icons, they are free to use for no commercial projects (with credits).
 
 The use of the logo is not allowed.
 
+
 ### 7. A handmade web 
 
-This project is a handmaded web, no AI generated. It's important that internet remain for and from people and the web be more than a product, an artistic (and tolerant and respectful) expression of self and comunnities. 
+This project is a handmaded web, no AI generated. AI is useful as faster stackoverflow / google research (my only use of it) but shoudn't be the ghostwriter neither the captain of our human capabilities or artistic projects. It's important that internet remain for and from people and the web be more than a product, an artistic (and tolerant and respectful) expression of self and comunnities. 
 
-There are many groups of people embracing this philosophy and this projects has the lucky of be included in one amazing project [Hypertext.tv](https://github.com/evadecker/hypertext.tv) by @evadecker that pursues it. So, I encorauge you to visit it, contribute and think about what future do you want for the internet. 
+There are many groups of people embracing this philosophy and this projects has the lucky of be included in one amazing project [Hypertext.tv](https://github.com/evadecker/hypertext.tv) by @evadecker that pursues it. So, I encorauge you to visit it, contribute and think about what future we want for the internet :)
