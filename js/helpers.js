@@ -23,3 +23,7 @@ export const convertBufferSampleIntoCoordinates = (sampleIndex, analyser, canvas
     return {x, y}
 }
 
+export const calculateNumberOfLinesThroughDelay = (delayOnSecons) =>{
+    console.log(delayOnSecons.toString())
+    return delayOnSecons.toString().split('.')[1]
+}

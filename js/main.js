@@ -1,5 +1,10 @@
 import * as Tone from "tone";
-import { addTemporalStyles, convertBufferSampleIntoCoordinates, setContextStyles } from "./helpers.js";
+import {
+    addTemporalStyles,
+    calculateNumberOfLinesThroughDelay,
+    convertBufferSampleIntoCoordinates,
+    setContextStyles
+} from "./helpers.js";
 
 
 /*************************************************/
@@ -150,6 +155,7 @@ const clearCanvas = (context) => {
 }
 
 const paintOnCanvas = () =>{
+
     context = canvas.getContext('2d')
     const path = new Path2D()
     clearCanvas(context)
@@ -161,6 +167,14 @@ const paintOnCanvas = () =>{
     }
     context.stroke(path)
     animationID = requestAnimationFrame(paintOnCanvas)
+    //
+    //// if delay is applied, then will be multiples lines
+    //if (delayOnSeconds !== 0){
+    //    path2.moveTo(x, canvas.height/calculateNumberOfLinesThroughDelay(delayOnSeconds))
+    //    path2.lineTo(x+2, y/calculateNumberOfLinesThroughDelay(delayOnSeconds))
+    //    context.stroke(path2)
+    //}
+    //
 }
 
 // events
@@ -219,7 +233,6 @@ waveformSelectors.forEach((element, index) =>{
         let prevButton = document.querySelector(`#${selectedWaveform}`)
         prevButton.children.item(0).src = '/'+selectedWaveform+'.svg'
         selectedWaveform = e.target.id
-        console.log(selectedWaveform)
         e.target.children.item(0).src = '/'+selectedWaveform+'-yellow.svg'
     })
 })
@@ -287,11 +300,12 @@ delayInputSelector.addEventListener('input', e =>{
     e.preventDefault()
     delayOnSeconds = e.target.value
     if (delayOnSeconds === "0"){
+        console.log('bye')
         synth.disconnect(delay)
         delayOnSeconds = 0
         return
     }
-
+    // synth
     delay.delayTime.value = delayOnSeconds
     delay.feedback.value = delayOnSeconds <= 0.5 ?  delay.delayTime.value + 0.3 : 0.9
     synth.chain(delay)
