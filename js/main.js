@@ -37,6 +37,7 @@ let offX= 0
 let offY = 2
 let cleanGlitch = null
 let intervalGlitch = null
+let numberDelayLines = null
 
 // synth variables (tone.js objects)
 
@@ -167,14 +168,7 @@ const paintOnCanvas = () =>{
     }
     context.stroke(path)
     animationID = requestAnimationFrame(paintOnCanvas)
-    //
-    //// if delay is applied, then will be multiples lines
-    //if (delayOnSeconds !== 0){
-    //    path2.moveTo(x, canvas.height/calculateNumberOfLinesThroughDelay(delayOnSeconds))
-    //    path2.lineTo(x+2, y/calculateNumberOfLinesThroughDelay(delayOnSeconds))
-    //    context.stroke(path2)
-    //}
-    //
+
 }
 
 // events
@@ -299,16 +293,22 @@ destroyerInputSelector.addEventListener('input', e =>{
 delayInputSelector.addEventListener('input', e =>{
     e.preventDefault()
     delayOnSeconds = e.target.value
+    numberDelayLines = calculateNumberOfLinesThroughDelay(delayOnSeconds)
     if (delayOnSeconds === "0"){
-        console.log('bye')
         synth.disconnect(delay)
         delayOnSeconds = 0
         return
     }
-    // synth
+    // audio
     delay.delayTime.value = delayOnSeconds
     delay.feedback.value = delayOnSeconds <= 0.5 ?  delay.delayTime.value + 0.3 : 0.9
     synth.chain(delay)
+    // visual effect
+    //for (let i= 1; i<=numberDelayLines; i++){
+    //    context.beginPath() // new path, same context
+    //    context.rect(i *20,i*30, i*20, i*30)
+    //    context.stroke()
+    //}
 
 } )
 
