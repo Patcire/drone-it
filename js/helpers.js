@@ -26,3 +26,11 @@ export const convertBufferSampleIntoCoordinates = (sampleIndex, analyser, canvas
 export const calculateNumberOfLinesThroughDelay = (delayOnSecons) =>{
     return delayOnSecons.toString().split('.')[1]
 }
+
+export const delayPainting = (context, numberDelayLines) =>{
+    for (let i= 1; i<=numberDelayLines; i++){
+        context.beginPath() // new path, same context
+        context.rect(i *numberDelayLines,i*numberDelayLines, i*numberDelayLines, i*numberDelayLines)
+        context.stroke()
+    }
+}

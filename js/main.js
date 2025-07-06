@@ -2,7 +2,7 @@ import * as Tone from "tone";
 import {
     addTemporalStyles,
     calculateNumberOfLinesThroughDelay,
-    convertBufferSampleIntoCoordinates,
+    convertBufferSampleIntoCoordinates, delayPainting,
     setContextStyles
 } from "./helpers.js";
 
@@ -167,8 +167,8 @@ const paintOnCanvas = () =>{
         path.lineTo(x, y/2)
     }
     context.stroke(path)
+    numberDelayLines > 0 && delayPainting(context, numberDelayLines)
     animationID = requestAnimationFrame(paintOnCanvas)
-
 }
 
 // events
@@ -304,11 +304,7 @@ delayInputSelector.addEventListener('input', e =>{
     delay.feedback.value = delayOnSeconds <= 0.5 ?  delay.delayTime.value + 0.3 : 0.9
     synth.chain(delay)
     // visual effect
-    //for (let i= 1; i<=numberDelayLines; i++){
-    //    context.beginPath() // new path, same context
-    //    context.rect(i *20,i*30, i*20, i*30)
-    //    context.stroke()
-    //}
+
 
 } )
 
