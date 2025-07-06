@@ -74,3 +74,7 @@ The use of the logo is not allowed.
 This project is a handmaded web, no AI generated. AI is useful as faster stackoverflow / google research (my only use of it) but shoudn't be the ghostwriter neither the captain of our human capabilities or artistic projects. It's important that internet remain for and from people and the web be more than a product, an artistic (and tolerant and respectful) expression of self and comunnities. 
 
 There are many groups of people embracing this philosophy and this projects has the lucky of be included in one amazing project [Hypertext.tv](https://github.com/evadecker/hypertext.tv) by @evadecker that pursues it. So, I encorauge you to visit it, contribute and think about what future we want for the internet :)
+
+**Update (06/07/2025)**: *To more I thought about it and the more I read it about it more I refuse to use AI even as a "faster google". So since last few weeks I don't use it at all and feel more conected with the project and the time that I dedicate to it and feel that I'm learning and consolidating more knowledge searching through the web than before* 😊
+
+<small>If you want to read more about this theme I recommend you this blogpost! [Great Blogpost by Frank](https://www.frank.computer/blog/2024/06/llms-and-thoughts.html) :)<small>
