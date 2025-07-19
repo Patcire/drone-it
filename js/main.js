@@ -2,7 +2,7 @@ import * as Tone from "tone";
 import {
     addTemporalStyles,
     calculateNumberOfLinesThroughDelay,
-    convertBufferSampleIntoCoordinates, delayPainting,
+    convertBufferSampleIntoCoordinates, delayPainting, handleStyle,
     setContextStyles
 } from "./helpers.js";
 
@@ -129,6 +129,7 @@ const handleOctaveMinusSelection = (index) => {
     addTemporalStyles(octValuesSelectors[index], 'limit-reached', 500)
 }
 
+
 const cleanAndStopSequencer = () => {
 
     // clean visually
@@ -173,12 +174,19 @@ const paintOnCanvas = () =>{
 
 // events
 
-onButton.addEventListener("click", () => {startSequencer()})
+onButton.addEventListener("click", () => {
+    startSequencer()
+    handleStyle(true, onButton, 'selected')
+    handleStyle(false, offButton, 'selected')
+})
 
 offButton.addEventListener("click", () => {
     // synth cleaning
     cleanAndStopSequencer()
     stopAllSynthParameters()
+    //ui cleaning
+    handleStyle(false, onButton, 'selected')
+    handleStyle(true, offButton, 'selected')
     // screen canvas cleaning
     clearCanvas(context)
     cancelAnimationFrame(animationID)

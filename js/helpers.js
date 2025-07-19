@@ -6,6 +6,11 @@ export const addTemporalStyles = (selector, style, time) => {
     },time)
 }
 
+export const handleStyle = (add, selector, style)=>{
+    add ? selector.classList.add(style) : selector.classList.remove(style)
+}
+
+
 export const setContextStyles = (context, lineWidth, strokeColor, shadowColor, shadowBlur, offX, offY) =>{
     context.lineWidth = lineWidth
     context.strokeStyle = strokeColor
