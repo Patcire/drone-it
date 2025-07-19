@@ -219,7 +219,7 @@ main{
     border: none;
     background: none;
     cursor: pointer;
-    transition: ease-in-out 0.5s;
+    transition: ease-in-out 0.15s;
   }
   & img{
     height: 20px;
