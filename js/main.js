@@ -41,15 +41,25 @@ let numberDelayLines = null
 
 // synth variables (tone.js objects)
 
+/*
+OLD SYNTH ENGINE
 const finalNodeOfChain = new Tone.Gain().toDestination()
 const synth = new Tone.FMSynth().connect(finalNodeOfChain)
-const osc = new Tone.Oscillator().connect(finalNodeOfChain)
+const osc = new Tone.Oscillator(null, selectedWaveform).connect(finalNodeOfChain)
 const osc2 =  new Tone.Oscillator("A2", selectedWaveform).connect(finalNodeOfChain)
 const timesTwo = new Tone.WaveShaper((val) => val * 2, 2048).connect(osc.frequency)
 const signal = new Tone.Signal(440).connect(timesTwo) // no remove, is used!!
 const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).connect(finalNodeOfChain)
 const dest = new Tone.BitCrusher({bits: reversedBitValue}).connect(finalNodeOfChain)
 let delay = new Tone.PingPongDelay({delayTime: delayOnSeconds, feedback:0}).connect(finalNodeOfChain)
+const analyser = new Tone.Analyser("waveform", 256)
+*/
+
+const synth = new Tone.FMSynth({oscillator: {type: "sine"}}).toDestination()
+const osc2 =  new Tone.Oscillator("A2", selectedWaveform).toDestination()
+const rev = new Tone.Reverb({decay: revAmount, preDelay: 0.10, wet: 0.8}).toDestination()
+const dest = new Tone.BitCrusher({bits: reversedBitValue}).toDestination()
+let delay = new Tone.PingPongDelay({delayTime: delayOnSeconds, feedback:0}).toDestination()
 const analyser = new Tone.Analyser("waveform", 256)
 
 // selectors
@@ -77,10 +87,11 @@ const adjustGain = (gainValue) =>{
 }
 
 const playSynth = () => {
-    synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1]+selectedOctaves[stepCounter-1], "8n")
     synth.connect(analyser)
-    osc.start()
-    osc2.baseType = selectedWaveform
+
+    synth.triggerAttackRelease(sequenceOfNotes[stepCounter-1]+selectedOctaves[stepCounter-1], "8n")
+    //osc.start()
+    osc2.volume.value = -12
     osc2.start()
 }
 
@@ -232,11 +243,18 @@ octMinusButtons.forEach((el, index) => {
 waveformSelectors.forEach((element, index) =>{
     element.addEventListener("click", (e) => {
         e.preventDefault()
+
+        // icon changes of color
         let prevButton = document.querySelector(`#${selectedWaveform}`)
         prevButton.children.item(0).src = '/'+selectedWaveform+'.svg'
         selectedWaveform = e.target.id
         e.target.children.item(0).src = '/'+selectedWaveform+'-yellow.svg'
+
+        // audio reaction
+        synth.oscillator.type = selectedWaveform
+        osc2.baseType = selectedWaveform
     })
+
 })
 
 reverbInputSelector.addEventListener('input', e =>{
@@ -311,8 +329,6 @@ delayInputSelector.addEventListener('input', e =>{
     delay.delayTime.value = delayOnSeconds
     delay.feedback.value = delayOnSeconds <= 0.5 ?  delay.delayTime.value + 0.3 : 0.9
     synth.chain(delay)
-    // visual effect
-
 
 } )
 
