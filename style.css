@@ -192,6 +192,12 @@ main{
     justify-content: center;
     align-items: center;
     background-color: var(--gray);
+    transition: ease-in-out 0.25s;
+  }
+
+  & .screen:hover{
+    cursor: pointer;
+    background-color: rgba(57, 62, 70, 0.38);
   }
 
 }
@@ -398,7 +404,8 @@ main{
     /*margin-top: clamp(1rem, 1vw, 0.6rem);*/
     font-size: clamp(0.8rem, 1.2vw ,1.5rem);
     color: transparent;
-    -webkit-text-stroke: 0.0005px var(--secondary-color);
+    -webkit-text-stroke: 0.16px var(--secondary-color);
+    /* ideal value would be 0.0005px on chrome but subpixel looks diffenret on chromium / mozilla */
   }
 }
 
