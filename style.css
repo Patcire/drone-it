@@ -179,6 +179,20 @@ main{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
   }
+  & .canvas-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  & .turn-off-screen{
+    color: var(--secondary-color);
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: ease-in-out 0.5s;
+  }
   & .screen{
     margin: 3rem auto 0;
     aspect-ratio: 12/9;
@@ -195,9 +209,14 @@ main{
     transition: ease-in-out 0.25s;
   }
 
-  & .screen:hover{
+  & .screen:hover {
     cursor: pointer;
     background-color: rgba(57, 62, 70, 0.38);
+  }
+  & .screen:hover + .turn-off-screen {
+    transition: ease-in-out 0.25s;
+    visibility: visible;
+    opacity: 1;
   }
 
 }
