@@ -70,6 +70,7 @@ The use of the logo is not allowed.
 
 
 ### 7. A handmade web 
+***
 
 This project is a handmaded web, no AI generated. AI is useful as faster stackoverflow / google research (my only use of it) but shoudn't be the ghostwriter neither the captain of our human capabilities or artistic projects. It's important that internet remain for and from people and the web be more than a product, an artistic (and tolerant and respectful) expression of self and comunnities. 
 
